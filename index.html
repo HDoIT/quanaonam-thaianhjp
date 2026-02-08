@@ -1,0 +1,3520 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Thái Anh JP - ĐẾN LÀ ĐẸP | Thời trang nam Việt tại Nhật</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a5fb4;
+            --primary-dark: #0d4a9c;
+            --secondary: #f9c74f;
+            --dark: #0f1a2e;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --success: #2ecc71;
+            --danger: #e74c3c;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f0f2f5;
+            overflow-x: hidden;
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: transparent;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* Animated Background with stronger effects */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.8;
+            overflow: hidden;
+        }
+
+        .bg-particle {
+            position: absolute;
+            background: radial-gradient(circle, rgba(249, 199, 79, 0.25) 0%, rgba(249, 199, 79, 0) 70%);
+            border-radius: 50%;
+            animation: float-particle 15s infinite linear;
+        }
+
+        .bg-particle:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+            animation-duration: 20s;
+        }
+
+        .bg-particle:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 3s;
+            animation-duration: 15s;
+            background: radial-gradient(circle, rgba(26, 95, 180, 0.2) 0%, rgba(26, 95, 180, 0) 70%);
+        }
+
+        .bg-particle:nth-child(3) {
+            width: 250px;
+            height: 250px;
+            bottom: 10%;
+            left: 15%;
+            animation-delay: 6s;
+            animation-duration: 25s;
+            background: radial-gradient(circle, rgba(15, 26, 46, 0.15) 0%, rgba(15, 26, 46, 0) 70%);
+        }
+
+        .bg-particle:nth-child(4) {
+            width: 180px;
+            height: 180px;
+            top: 20%;
+            right: 20%;
+            animation-delay: 9s;
+            animation-duration: 18s;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header Mobile */
+        header {
+            background: linear-gradient(135deg, rgba(15, 26, 46, 0.95) 0%, rgba(26, 95, 180, 0.95) 100%);
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            animation: header-vibrate 20s infinite;
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            animation: fadeInDown 1s ease-out;
+            position: relative;
+        }
+
+        .logo-glow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--secondary) 0%, transparent 70%);
+            opacity: 0.3;
+            animation: logo-glow 2s infinite alternate;
+        }
+
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--secondary);
+            animation: pulse 1.5s infinite;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .logo-text h1 {
+            font-size: 1.4rem;
+            margin-bottom: 3px;
+            background: linear-gradient(to right, #fff, var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: text-shake 15s infinite;
+        }
+
+        .logo-text p {
+            font-size: 0.8rem;
+            opacity: 0.9;
+            animation: text-vibrate 18s infinite;
+        }
+
+        .header-cta {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-messenger-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 25px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: var(--transition);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+            animation: shake-violent 5s infinite, zoom-crazy 4s infinite, color-change 10s infinite;
+        }
+
+        .header-messenger-btn:hover,
+        .header-messenger-btn:active {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px) scale(1.1);
+            box-shadow: 0 5px 20px rgba(0, 132, 255, 0.6);
+            animation: none;
+        }
+
+        .header-messenger-btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: 0.5s;
+        }
+
+        .header-messenger-btn:hover:before,
+        .header-messenger-btn:active:before {
+            left: 100%;
+        }
+
+        .header-messenger-btn i {
+            font-size: 1rem;
+            animation: icon-crazy 3s infinite;
+        }
+
+        .countdown-container {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 12px 15px;
+            text-align: center;
+            animation: slideInRight 1s ease-out, countdown-shake 8s infinite;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .countdown-container:before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--secondary), var(--primary), var(--secondary), #ff0000);
+            z-index: -1;
+            border-radius: 12px;
+            animation: border-crazy 2s linear infinite;
+        }
+
+        .countdown-container:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            z-index: -1;
+        }
+
+        .countdown-title {
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+            opacity: 0.9;
+            animation: text-pulse 3s infinite;
+        }
+
+        .countdown {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .countdown-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .countdown-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: rgba(255, 255, 255, 0.25);
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            margin-bottom: 4px;
+            animation: pulse 1s infinite, zoom-wild 2s infinite, shake-number 6s infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .countdown-value:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+            transform: rotate(45deg);
+            animation: shine 2s infinite;
+        }
+
+        .countdown-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            opacity: 0.8;
+            animation: label-vibrate 10s infinite;
+        }
+
+        /* Hero Mobile */
+        .hero {
+            padding: 40px 0;
+            background: linear-gradient(135deg, rgba(245, 247, 250, 0.9) 0%, rgba(228, 237, 245, 0.9) 100%);
+            position: relative;
+            overflow: hidden;
+            animation: hero-shake 25s infinite;
+        }
+
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z" fill="%231a5fb4" fill-opacity="0.05"/></svg>');
+            opacity: 0.5;
+            animation: float-bg 40s linear infinite;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .hero-text {
+            width: 100%;
+            /* animation: fadeInLeft 1s ease-out; */
+        }
+
+        .hero-text h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+            line-height: 1.1;
+            text-align: center;
+            position: relative;
+            /* animation: title-earthquake 12s infinite; */
+        }
+
+        .hero-text h2 span {
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            /* animation: span-vibrate 8s infinite; */
+        }
+
+        .hero-text h2 span::after {
+            content: '';
+            position: absolute;
+            bottom: 3px;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background-color: rgba(26, 95, 180, 0.2);
+            z-index: -1;
+            /* animation: underline-shake 5s infinite; */
+        }
+
+        .hero-text p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            color: #555;
+            text-align: center;
+            /* animation: text-shake-soft 20s infinite; */
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 25px 0;
+            width: 100%;
+            align-items: center;
+        }
+
+        .hero-cta-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #0084ff 0%, #0066cc 100%);
+            color: white;
+            text-decoration: none;
+            padding: 18px 25px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            box-shadow: 0 8px 25px rgba(0, 132, 255, 0.4);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            animation: pulse-glow 1s infinite, shake-earthquake 4s infinite, zoom-crazy-fast 3s infinite, color-pulse 7s infinite;
+            width: 100%;
+            max-width: 320px;
+        }
+
+        .hero-cta-primary:hover,
+        .hero-cta-primary:active {
+            transform: translateY(-3px) scale(1.15);
+            box-shadow: 0 12px 30px rgba(0, 132, 255, 0.8);
+            animation: none;
+        }
+
+        .hero-cta-primary:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+
+        .hero-cta-primary:hover:before,
+        .hero-cta-primary:active:before {
+            left: 100%;
+        }
+
+        .hero-cta-primary i {
+            animation: icon-earthquake 2s infinite;
+        }
+
+        .hero-cta-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: white;
+            color: var(--primary);
+            text-decoration: none;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            border: 2px solid var(--primary);
+            width: 100%;
+            max-width: 320px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            animation: shake-wild 5s infinite, zoom-explosive 4s infinite, border-pulse 6s infinite;
+        }
+
+        .hero-cta-secondary:hover,
+        .hero-cta-secondary:active {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 8px 20px rgba(26, 95, 180, 0.5);
+            animation: none;
+        }
+
+        .hero-cta-secondary:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+
+        .hero-cta-secondary:hover:before,
+        .hero-cta-secondary:active:before {
+            left: 100%;
+        }
+
+        .hero-cta-secondary i {
+            transition: var(--transition);
+            animation: arrow-wild 3s infinite;
+        }
+
+        .hero-cta-secondary:hover i,
+        .hero-cta-secondary:active i {
+            transform: translateX(5px);
+        }
+
+        .hero-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 25px;
+        }
+
+        .feature-item {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            flex: 1;
+            min-width: 120px;
+            max-width: 150px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            animation: float-item 4s infinite ease-in-out, shake-feature 8s infinite;
+        }
+
+        .feature-item:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .feature-item:nth-child(2) {
+            animation-delay: 1s;
+        }
+
+        .feature-item:nth-child(3) {
+            animation-delay: 2s;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            animation: none;
+        }
+
+        .feature-item:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(249, 199, 79, 0.1), transparent);
+            z-index: 1;
+            transition: var(--transition);
+            opacity: 0;
+        }
+
+        .feature-item:hover:before {
+            opacity: 1;
+        }
+
+        .feature-icon {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+            /* animation: icon-rotate-wild 5s infinite; */
+        }
+
+        .feature-text {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--dark);
+            position: relative;
+            z-index: 2;
+            animation: text-vibrate-feature 10s infinite;
+        }
+
+        .hero-image {
+            width: 100%;
+            position: relative;
+            animation: fadeInRight 1s ease-out, image-shake 15s infinite;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: var(--transition);
+            animation: image-pulse 8s infinite;
+        }
+
+        /* Products Section Mobile */
+        .products-section {
+            padding: 40px 0;
+            background-color: rgba(255, 255, 255, 0.9);
+            position: relative;
+            overflow: hidden;
+            animation: section-vibrate 30s infinite;
+        }
+
+        .products-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z" fill="%23f9c74f" fill-opacity="0.03"/></svg>');
+            opacity: 0.5;
+            animation: float-bg 60s linear infinite reverse;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease-out;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-title h2 {
+            font-size: 1.8rem;
+            color: var(--dark);
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+            animation: title-earthquake-strong 10s infinite;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 3px;
+            animation: line-pulse-crazy 2s infinite;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            padding: 0 10px;
+            animation: text-vibrate-strong 15s infinite;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            animation: fadeInUp 0.8s ease-out;
+            opacity: 0;
+            animation-fill-mode: forwards;
+            border: 1px solid #f0f0f0;
+            position: relative;
+            z-index: 1;
+            animation: card-shake 20s infinite;
+        }
+
+        /* Fire/Glow effect for product cards */
+        .product-card:before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--secondary), var(--primary), var(--secondary), var(--primary));
+            z-index: -1;
+            border-radius: 14px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            animation: fire-glow 2s infinite;
+        }
+
+        .product-card:hover:before {
+            opacity: 1;
+        }
+
+        .product-card:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: white;
+            border-radius: 12px;
+            z-index: -1;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(249, 199, 79, 0.3);
+            animation: none;
+        }
+
+        .product-image {
+            /* height: 180px; */
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+            animation: image-vibrate 25s infinite;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: linear-gradient(135deg, var(--secondary), #ff9a3c);
+            color: var(--dark);
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            z-index: 2;
+            box-shadow: 0 3px 10px rgba(249, 199, 79, 0.3);
+            animation: badge-pulse 1.5s infinite, badge-earthquake 3s infinite;
+        }
+
+        .product-info {
+            padding: 15px;
+        }
+
+        .product-name {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--dark);
+            text-align: center;
+            position: relative;
+            animation: product-name-shake 15s infinite;
+        }
+
+        .product-name:after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            animation: underline-vibrate 5s infinite;
+        }
+
+        .product-description {
+            color: var(--gray);
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            line-height: 1.5;
+            text-align: center;
+            animation: text-shake-soft 18s infinite;
+        }
+
+        .product-cta {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .product-cta-btn {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            animation: cta-earthquake 5s infinite, cta-zoom-wild 3s infinite, color-change-fast 8s infinite;
+        }
+
+        .product-cta-btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+
+        .product-cta-btn:hover:before,
+        .product-cta-btn:active:before {
+            left: 100%;
+        }
+
+        .product-cta-btn:hover,
+        .product-cta-btn:active {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, #0a3c7c 100%);
+            transform: translateY(-2px) scale(1.12);
+            box-shadow: 0 5px 20px rgba(26, 95, 180, 0.4);
+            animation: none;
+        }
+
+        .product-cta-btn i {
+            animation: icon-earthquake-fast 1.5s infinite;
+        }
+
+        /* Floating elements around product cards */
+        .fire-particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: radial-gradient(circle, var(--secondary) 0%, transparent 70%);
+            border-radius: 50%;
+            opacity: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* About Section Mobile */
+        .about-section {
+            padding: 40px 0;
+            background: linear-gradient(135deg, rgba(15, 26, 46, 0.95) 0%, rgba(26, 95, 180, 0.95) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+            animation: about-shake 35s infinite;
+        }
+
+        .about-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z" fill="%23ffffff" fill-opacity="0.05"/></svg>');
+            opacity: 0.4;
+            animation: float-bg 50s linear infinite;
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-text {
+            width: 100%;
+            animation: fadeInLeft 1s ease-out;
+        }
+
+        .about-text h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: white;
+            text-align: center;
+            position: relative;
+            animation: title-earthquake-about 8s infinite;
+        }
+
+        .about-text h2:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, var(--secondary), #fff);
+            border-radius: 3px;
+            animation: line-glow-crazy 3s infinite;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            opacity: 0.9;
+            font-size: 1rem;
+            text-align: center;
+            animation: text-vibrate-about 12s infinite;
+        }
+
+        .about-stats {
+            display: flex;
+            justify-content: space-around;
+            gap: 15px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            flex: 1;
+            min-width: 100px;
+            position: relative;
+            animation: stat-float-wild 4s infinite ease-in-out;
+        }
+
+        .stat-item:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .stat-item:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .stat-item:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 5px;
+            text-shadow: 0 0 10px rgba(249, 199, 79, 0.5);
+            animation: number-pulse-wild 2s infinite;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            animation: label-shake 15s infinite;
+        }
+
+        .about-image {
+            width: 100%;
+            animation: fadeInRight 1s ease-out;
+            position: relative;
+        }
+
+        .about-image:before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: linear-gradient(45deg, var(--secondary), var(--primary), var(--secondary));
+            border-radius: 15px;
+            z-index: -1;
+            opacity: 0.5;
+            animation: border-glow-crazy 2s infinite;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+            animation: image-shake-about 10s infinite;
+        }
+
+        /* Messenger Button Fixed Mobile - EXTREME SHAKE */
+        .messenger-fixed {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            /* animation: float-crazy 2s infinite, fixed-earthquake 6s infinite; */
+        }
+
+        .messenger-fixed-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0084ff 0%, #0066cc 100%);
+            color: white;
+            text-decoration: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            box-shadow: 0 6px 20px rgba(0, 132, 255, 0.5);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            animation: fixed-zoom-wild 3s infinite, fixed-rotate 5s infinite;
+        }
+
+        .messenger-fixed-btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: translateX(-100%);
+            transition: 0.5s;
+        }
+
+        .messenger-fixed-btn:hover:before,
+        .messenger-fixed-btn:active:before {
+            transform: translateX(100%);
+        }
+
+        .messenger-fixed-btn:hover,
+        .messenger-fixed-btn:active {
+            transform: scale(1.2);
+            box-shadow: 0 8px 25px rgba(0, 132, 255, 0.8);
+            animation: none;
+        }
+
+        .messenger-fixed-btn i {
+            animation: icon-spin-crazy 2s infinite;
+        }
+
+        /* Footer Mobile */
+        footer {
+            background-color: rgba(15, 26, 46, 0.95);
+            color: white;
+            padding: 30px 0 15px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: footer-shake 40s infinite;
+        }
+
+        footer:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z" fill="%23f9c74f" fill-opacity="0.05"/></svg>');
+            opacity: 0.3;
+            animation: float-bg 70s linear infinite;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            position: relative;
+            animation: logo-earthquake 7s infinite;
+        }
+
+        .footer-logo span {
+            color: var(--secondary);
+            text-shadow: 0 0 10px rgba(249, 199, 79, 0.5);
+        }
+
+        .footer-contact {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .footer-contact a {
+            color: white;
+            font-size: 1.3rem;
+            transition: var(--transition);
+            position: relative;
+            animation: icon-earthquake-footer 4s infinite;
+        }
+
+        .footer-contact a:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .footer-contact a:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        .footer-contact a:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .footer-contact a:before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            background: rgba(249, 199, 79, 0.1);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .footer-contact a:hover:before,
+        .footer-contact a:active:before {
+            opacity: 1;
+        }
+
+        .footer-contact a:hover,
+        .footer-contact a:active {
+            color: var(--secondary);
+            transform: translateY(-3px) scale(1.3);
+            animation: none;
+        }
+
+        .footer-bottom {
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.8rem;
+            opacity: 0.7;
+            position: relative;
+            z-index: 1;
+            animation: footer-text-shake 20s infinite;
+        }
+
+        /* EXTREME ANIMATIONS - VIOLENT SHAKE, EARTHQUAKE EFFECTS */
+        @keyframes shake-violent {
+
+            0%,
+            10%,
+            20%,
+            30%,
+            40%,
+            50%,
+            60%,
+            70%,
+            80%,
+            90%,
+            100% {
+                transform: translateX(0);
+            }
+
+            5%,
+            15%,
+            25%,
+            35%,
+            45%,
+            55%,
+            65%,
+            75%,
+            85%,
+            95% {
+                transform: translateX(-5px);
+            }
+
+            2.5%,
+            7.5%,
+            12.5%,
+            17.5%,
+            22.5%,
+            27.5%,
+            32.5%,
+            37.5%,
+            42.5%,
+            47.5%,
+            52.5%,
+            57.5%,
+            62.5%,
+            67.5%,
+            72.5%,
+            77.5%,
+            82.5%,
+            87.5%,
+            92.5%,
+            97.5% {
+                transform: translateX(5px);
+            }
+        }
+
+        @keyframes shake-earthquake {
+
+            0%,
+            100% {
+                transform: translateX(0) translateY(0) rotate(0deg);
+            }
+
+            10%,
+            30%,
+            50%,
+            70%,
+            90% {
+                transform: translateX(-10px) translateY(-5px) rotate(-5deg);
+            }
+
+            20%,
+            40%,
+            60%,
+            80% {
+                transform: translateX(10px) translateY(5px) rotate(5deg);
+            }
+        }
+
+        @keyframes shake-wild {
+
+            0%,
+            100% {
+                transform: translateX(0) scale(1);
+            }
+
+            25% {
+                transform: translateX(-8px) scale(1.05) rotate(-8deg);
+            }
+
+            50% {
+                transform: translateX(8px) scale(0.95) rotate(8deg);
+            }
+
+            75% {
+                transform: translateX(-8px) scale(1.05) rotate(-8deg);
+            }
+        }
+
+        @keyframes title-earthquake {
+
+            0%,
+            100% {
+                transform: translateX(0) translateY(0);
+            }
+
+            10%,
+            30%,
+            50%,
+            70%,
+            90% {
+                transform: translateX(-8px) translateY(-4px);
+            }
+
+            20%,
+            40%,
+            60%,
+            80% {
+                transform: translateX(8px) translateY(4px);
+            }
+        }
+
+        @keyframes title-earthquake-strong {
+
+            0%,
+            100% {
+                transform: translateX(0) translateY(0) rotate(0deg);
+            }
+
+            10% {
+                transform: translateX(-12px) translateY(-6px) rotate(-3deg);
+            }
+
+            20% {
+                transform: translateX(12px) translateY(6px) rotate(3deg);
+            }
+
+            30% {
+                transform: translateX(-8px) translateY(-4px) rotate(-2deg);
+            }
+
+            40% {
+                transform: translateX(8px) translateY(4px) rotate(2deg);
+            }
+
+            50% {
+                transform: translateX(-10px) translateY(-5px) rotate(-4deg);
+            }
+
+            60% {
+                transform: translateX(10px) translateY(5px) rotate(4deg);
+            }
+
+            70% {
+                transform: translateX(-6px) translateY(-3px) rotate(-1deg);
+            }
+
+            80% {
+                transform: translateX(6px) translateY(3px) rotate(1deg);
+            }
+
+            90% {
+                transform: translateX(-14px) translateY(-7px) rotate(-5deg);
+            }
+        }
+
+        @keyframes title-earthquake-about {
+
+            0%,
+            100% {
+                transform: translateX(0) translateY(0);
+            }
+
+            20%,
+            60% {
+                transform: translateX(-10px) translateY(-5px);
+            }
+
+            40%,
+            80% {
+                transform: translateX(10px) translateY(5px);
+            }
+        }
+
+        @keyframes zoom-crazy {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            25% {
+                transform: scale(1.15);
+            }
+
+            50% {
+                transform: scale(0.9);
+            }
+
+            75% {
+                transform: scale(1.1);
+            }
+        }
+
+        @keyframes zoom-crazy-fast {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            33% {
+                transform: scale(1.2);
+            }
+
+            66% {
+                transform: scale(0.85);
+            }
+        }
+
+        @keyframes zoom-explosive {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            20% {
+                transform: scale(1.25);
+            }
+
+            40% {
+                transform: scale(0.8);
+            }
+
+            60% {
+                transform: scale(1.15);
+            }
+
+            80% {
+                transform: scale(0.9);
+            }
+        }
+
+        @keyframes zoom-wild {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.3);
+            }
+        }
+
+        @keyframes fixed-zoom-wild {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            25% {
+                transform: scale(1.3);
+            }
+
+            50% {
+                transform: scale(0.8);
+            }
+
+            75% {
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes cta-earthquake {
+
+            0%,
+            100% {
+                transform: translateX(0) translateY(0);
+            }
+
+            10%,
+            30%,
+            50%,
+            70%,
+            90% {
+                transform: translateX(-7px) translateY(-3px);
+            }
+
+            20%,
+            40%,
+            60%,
+            80% {
+                transform: translateX(7px) translateY(3px);
+            }
+        }
+
+        @keyframes cta-zoom-wild {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes badge-earthquake {
+
+            0%,
+            100% {
+                transform: translateX(0) rotate(0deg);
+            }
+
+            25% {
+                transform: translateX(-8px) rotate(-15deg);
+            }
+
+            50% {
+                transform: translateX(8px) rotate(15deg);
+            }
+
+            75% {
+                transform: translateX(-5px) rotate(-10deg);
+            }
+        }
+
+        @keyframes icon-earthquake {
+
+            0%,
+            100% {
+                transform: translateX(0) rotate(0deg);
+            }
+
+            25% {
+                transform: translateX(-5px) rotate(-20deg);
+            }
+
+            50% {
+                transform: translateX(5px) rotate(20deg);
+            }
+
+            75% {
+                transform: translateX(-3px) rotate(-10deg);
+            }
+        }
+
+        @keyframes icon-earthquake-fast {
+
+            0%,
+            100% {
+                transform: translateX(0) rotate(0deg);
+            }
+
+            33% {
+                transform: translateX(-6px) rotate(-25deg);
+            }
+
+            66% {
+                transform: translateX(6px) rotate(25deg);
+            }
+        }
+
+        @keyframes icon-crazy {
+
+            0%,
+            100% {
+                transform: translateX(0) rotate(0deg);
+            }
+
+            25% {
+                transform: translateX(-7px) rotate(-30deg);
+            }
+
+            50% {
+                transform: translateX(7px) rotate(30deg);
+            }
+
+            75% {
+                transform: translateX(-4px) rotate(-15deg);
+            }
+        }
+
+        @keyframes arrow-wild {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            25%,
+            75% {
+                transform: translateX(-8px);
+            }
+
+            50% {
+                transform: translateX(8px);
+            }
+        }
+
+        @keyframes icon-rotate-wild {
+
+            0%,
+            100% {
+                transform: rotate(0deg);
+            }
+
+            25% {
+                transform: rotate(45deg);
+            }
+
+            50% {
+                transform: rotate(-45deg);
+            }
+
+            75% {
+                transform: rotate(90deg);
+            }
+        }
+
+        @keyframes icon-spin-crazy {
+            0% {
+                transform: rotate(0deg) scale(1);
+            }
+
+            50% {
+                transform: rotate(180deg) scale(1.3);
+            }
+
+            100% {
+                transform: rotate(360deg) scale(1);
+            }
+        }
+
+        @keyframes icon-earthquake-footer {
+
+            0%,
+            100% {
+                transform: translateX(0) translateY(0);
+            }
+
+            25%,
+            75% {
+                transform: translateX(-6px) translateY(-3px);
+            }
+
+            50% {
+                transform: translateX(6px) translateY(3px);
+            }
+        }
+
+        @keyframes float-item {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes shake-feature {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            25%,
+            75% {
+                transform: translateX(-5px);
+            }
+
+            50% {
+                transform: translateX(5px);
+            }
+        }
+
+        @keyframes stat-float-wild {
+
+            0%,
+            100% {
+                transform: translateY(0) translateX(0);
+            }
+
+            25% {
+                transform: translateY(-8px) translateX(-3px);
+            }
+
+            50% {
+                transform: translateY(0) translateX(3px);
+            }
+
+            75% {
+                transform: translateY(-5px) translateX(-2px);
+            }
+        }
+
+        @keyframes number-pulse-wild {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.4);
+            }
+        }
+
+        @keyframes line-pulse-crazy {
+
+            0%,
+            100% {
+                width: 60px;
+            }
+
+            25% {
+                width: 40px;
+            }
+
+            50% {
+                width: 80px;
+            }
+
+            75% {
+                width: 20px;
+            }
+        }
+
+        @keyframes line-glow-crazy {
+
+            0%,
+            100% {
+                opacity: 1;
+                width: 60px;
+            }
+
+            50% {
+                opacity: 0.5;
+                width: 100px;
+            }
+        }
+
+        @keyframes fixed-earthquake {
+
+            0%,
+            100% {
+                transform: translateX(0) translateY(0);
+            }
+
+            10%,
+            30%,
+            50%,
+            70%,
+            90% {
+                transform: translateX(-15px) translateY(-8px);
+            }
+
+            20%,
+            40%,
+            60%,
+            80% {
+                transform: translateX(15px) translateY(8px);
+            }
+        }
+
+        @keyframes fixed-rotate {
+
+            0%,
+            100% {
+                transform: rotate(0deg);
+            }
+
+            25% {
+                transform: rotate(15deg);
+            }
+
+            50% {
+                transform: rotate(-15deg);
+            }
+
+            75% {
+                transform: rotate(10deg);
+            }
+        }
+
+        @keyframes float-crazy {
+
+            0%,
+            100% {
+                transform: translateY(0) translateX(0);
+            }
+
+            25% {
+                transform: translateY(-15px) translateX(-5px);
+            }
+
+            50% {
+                transform: translateY(0) translateX(5px);
+            }
+
+            75% {
+                transform: translateY(-10px) translateX(-3px);
+            }
+        }
+
+        @keyframes logo-earthquake {
+
+            0%,
+            100% {
+                transform: translateX(0) translateY(0);
+            }
+
+            25%,
+            75% {
+                transform: translateX(-8px) translateY(-4px);
+            }
+
+            50% {
+                transform: translateX(8px) translateY(4px);
+            }
+        }
+
+        /* Text and element vibrations */
+        @keyframes text-shake {
+
+            0%,
+            90%,
+            92%,
+            94%,
+            96%,
+            98%,
+            100% {
+                transform: translateX(0);
+            }
+
+            91% {
+                transform: translateX(-3px);
+            }
+
+            93% {
+                transform: translateX(3px);
+            }
+
+            95% {
+                transform: translateX(-2px);
+            }
+
+            97% {
+                transform: translateX(2px);
+            }
+
+            99% {
+                transform: translateX(-1px);
+            }
+        }
+
+        @keyframes text-vibrate {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            25%,
+            75% {
+                transform: translateX(-1px);
+            }
+
+            50% {
+                transform: translateX(1px);
+            }
+        }
+
+        @keyframes text-vibrate-strong {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            10%,
+            30%,
+            50%,
+            70%,
+            90% {
+                transform: translateX(-2px);
+            }
+
+            20%,
+            40%,
+            60%,
+            80% {
+                transform: translateX(2px);
+            }
+        }
+
+        @keyframes text-shake-soft {
+
+            0%,
+            95%,
+            100% {
+                transform: translateX(0);
+            }
+
+            96%,
+            98% {
+                transform: translateX(-1px);
+            }
+
+            97%,
+            99% {
+                transform: translateX(1px);
+            }
+        }
+
+        @keyframes text-vibrate-feature {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            33%,
+            66% {
+                transform: translateX(-2px);
+            }
+
+            50% {
+                transform: translateX(2px);
+            }
+        }
+
+        @keyframes text-vibrate-about {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            25%,
+            75% {
+                transform: translateX(-3px);
+            }
+
+            50% {
+                transform: translateX(3px);
+            }
+        }
+
+        @keyframes text-pulse {
+
+            0%,
+            100% {
+                opacity: 0.9;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes label-vibrate {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            20%,
+            60% {
+                transform: translateX(-1px);
+            }
+
+            40%,
+            80% {
+                transform: translateX(1px);
+            }
+        }
+
+        @keyframes label-shake {
+
+            0%,
+            90%,
+            92%,
+            94%,
+            96%,
+            98%,
+            100% {
+                transform: translateX(0);
+            }
+
+            91% {
+                transform: translateX(-2px);
+            }
+
+            93% {
+                transform: translateX(2px);
+            }
+
+            95% {
+                transform: translateX(-1px);
+            }
+
+            97% {
+                transform: translateX(1px);
+            }
+
+            99% {
+                transform: translateX(-0.5px);
+            }
+        }
+
+        @keyframes product-name-shake {
+
+            0%,
+            92%,
+            94%,
+            96%,
+            98%,
+            100% {
+                transform: translateX(0);
+            }
+
+            93% {
+                transform: translateX(-4px);
+            }
+
+            95% {
+                transform: translateX(4px);
+            }
+
+            97% {
+                transform: translateX(-2px);
+            }
+
+            99% {
+                transform: translateX(2px);
+            }
+        }
+
+        @keyframes footer-text-shake {
+
+            0%,
+            90%,
+            92%,
+            94%,
+            96%,
+            98%,
+            100% {
+                transform: translateX(0);
+            }
+
+            91% {
+                transform: translateX(-2px);
+            }
+
+            93% {
+                transform: translateX(2px);
+            }
+
+            95% {
+                transform: translateX(-1px);
+            }
+
+            97% {
+                transform: translateX(1px);
+            }
+
+            99% {
+                transform: translateX(-0.5px);
+            }
+        }
+
+        /* Section vibrations */
+        @keyframes header-vibrate {
+
+            0%,
+            98%,
+            100% {
+                transform: translateX(0);
+            }
+
+            99% {
+                transform: translateX(-1px);
+            }
+        }
+
+        @keyframes hero-shake {
+
+            0%,
+            97%,
+            99%,
+            100% {
+                transform: translateX(0);
+            }
+
+            98% {
+                transform: translateX(-2px);
+            }
+        }
+
+        @keyframes section-vibrate {
+
+            0%,
+            96%,
+            98%,
+            100% {
+                transform: translateX(0);
+            }
+
+            97% {
+                transform: translateX(-1px);
+            }
+
+            99% {
+                transform: translateX(1px);
+            }
+        }
+
+        @keyframes about-shake {
+
+            0%,
+            95%,
+            97%,
+            99%,
+            100% {
+                transform: translateX(0);
+            }
+
+            96% {
+                transform: translateX(-3px);
+            }
+
+            98% {
+                transform: translateX(3px);
+            }
+        }
+
+        @keyframes footer-shake {
+
+            0%,
+            94%,
+            96%,
+            98%,
+            100% {
+                transform: translateX(0);
+            }
+
+            95% {
+                transform: translateX(-2px);
+            }
+
+            97% {
+                transform: translateX(2px);
+            }
+
+            99% {
+                transform: translateX(-1px);
+            }
+        }
+
+        /* Countdown specific */
+        @keyframes countdown-shake {
+
+            0%,
+            92%,
+            94%,
+            96%,
+            98%,
+            100% {
+                transform: translateX(0);
+            }
+
+            93% {
+                transform: translateX(-5px);
+            }
+
+            95% {
+                transform: translateX(5px);
+            }
+
+            97% {
+                transform: translateX(-3px);
+            }
+
+            99% {
+                transform: translateX(3px);
+            }
+        }
+
+        @keyframes shake-number {
+
+            0%,
+            90%,
+            92%,
+            94%,
+            96%,
+            98%,
+            100% {
+                transform: translateX(0);
+            }
+
+            91% {
+                transform: translateX(-4px);
+            }
+
+            93% {
+                transform: translateX(4px);
+            }
+
+            95% {
+                transform: translateX(-2px);
+            }
+
+            97% {
+                transform: translateX(2px);
+            }
+
+            99% {
+                transform: translateX(-1px);
+            }
+        }
+
+        /* Image vibrations */
+        @keyframes image-shake {
+
+            0%,
+            96%,
+            98%,
+            100% {
+                transform: translateX(0);
+            }
+
+            97% {
+                transform: translateX(-3px);
+            }
+
+            99% {
+                transform: translateX(3px);
+            }
+        }
+
+        @keyframes image-pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.9;
+            }
+        }
+
+        @keyframes image-vibrate {
+
+            0%,
+            94%,
+            96%,
+            98%,
+            100% {
+                transform: translateX(0);
+            }
+
+            95% {
+                transform: translateX(-2px);
+            }
+
+            97% {
+                transform: translateX(2px);
+            }
+
+            99% {
+                transform: translateX(-1px);
+            }
+        }
+
+        @keyframes image-shake-about {
+
+            0%,
+            92%,
+            94%,
+            96%,
+            98%,
+            100% {
+                transform: translateX(0);
+            }
+
+            93% {
+                transform: translateX(-4px);
+            }
+
+            95% {
+                transform: translateX(4px);
+            }
+
+            97% {
+                transform: translateX(-2px);
+            }
+
+            99% {
+                transform: translateX(2px);
+            }
+        }
+
+        /* Underline effects */
+        @keyframes underline-shake {
+
+            0%,
+            100% {
+                width: 100%;
+            }
+
+            50% {
+                width: 80%;
+            }
+        }
+
+        @keyframes underline-vibrate {
+
+            0%,
+            100% {
+                width: 40px;
+            }
+
+            50% {
+                width: 60px;
+            }
+        }
+
+        /* Card effects */
+        @keyframes card-shake {
+
+            0%,
+            98%,
+            100% {
+                transform: translateX(0);
+            }
+
+            99% {
+                transform: translateX(-2px);
+            }
+        }
+
+        /* Color effects */
+        @keyframes color-change {
+
+            0%,
+            100% {
+                background: rgba(255, 255, 255, 0.2);
+            }
+
+            50% {
+                background: rgba(249, 199, 79, 0.3);
+            }
+        }
+
+        @keyframes color-pulse {
+
+            0%,
+            100% {
+                background: linear-gradient(135deg, #0084ff 0%, #0066cc 100%);
+            }
+
+            50% {
+                background: linear-gradient(135deg, #0066cc 0%, #004c99 100%);
+            }
+        }
+
+        @keyframes color-change-fast {
+
+            0%,
+            100% {
+                background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            }
+
+            50% {
+                background: linear-gradient(135deg, var(--primary-dark) 0%, #0a3c7c 100%);
+            }
+        }
+
+        @keyframes border-pulse {
+
+            0%,
+            100% {
+                border-color: var(--primary);
+            }
+
+            50% {
+                border-color: var(--secondary);
+            }
+        }
+
+        /* Border effects */
+        @keyframes border-crazy {
+
+            0%,
+            100% {
+                opacity: 0.5;
+                background-position: 0% 50%;
+            }
+
+            50% {
+                opacity: 0.8;
+                background-position: 100% 50%;
+            }
+        }
+
+        @keyframes border-glow-crazy {
+
+            0%,
+            100% {
+                opacity: 0.5;
+            }
+
+            50% {
+                opacity: 0.9;
+            }
+        }
+
+        /* Span effects */
+        @keyframes span-vibrate {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            25%,
+            75% {
+                transform: translateX(-2px);
+            }
+
+            50% {
+                transform: translateX(2px);
+            }
+        }
+
+        /* Existing Animations */
+        @keyframes fire-glow {
+
+            0%,
+            100% {
+                opacity: 0.3;
+                background-position: 0% 50%;
+            }
+
+            50% {
+                opacity: 0.7;
+                background-position: 100% 50%;
+            }
+        }
+
+        @keyframes float-particle {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+            }
+
+            25% {
+                transform: translateY(-30px) translateX(15px) rotate(90deg);
+            }
+
+            50% {
+                transform: translateY(0) translateX(30px) rotate(180deg);
+            }
+
+            75% {
+                transform: translateY(30px) translateX(15px) rotate(270deg);
+            }
+
+            100% {
+                transform: translateY(0) translateX(0) rotate(360deg);
+            }
+        }
+
+        @keyframes logo-glow {
+            0% {
+                opacity: 0.2;
+                transform: scale(0.9);
+            }
+
+            100% {
+                opacity: 0.5;
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes shine {
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            }
+
+            100% {
+                transform: translateX(100%) translateY(100%) rotate(45deg);
+            }
+        }
+
+        @keyframes float-bg {
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: 100px 100px;
+            }
+        }
+
+        @keyframes badge-pulse {
+
+            0%,
+            100% {
+                box-shadow: 0 3px 10px rgba(249, 199, 79, 0.3);
+                transform: scale(1);
+            }
+
+            50% {
+                box-shadow: 0 3px 20px rgba(249, 199, 79, 0.6);
+                transform: scale(1.1);
+            }
+        }
+
+        @keyframes fire-particle {
+            0% {
+                opacity: 0;
+                transform: translateY(0) scale(0);
+            }
+
+            10% {
+                opacity: 1;
+                transform: translateY(-15px) scale(1.2);
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(-40px) scale(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+
+            70% {
+                transform: scale(0.95);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(249, 199, 79, 0.6);
+            }
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(249, 199, 79, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(249, 199, 79, 0);
+            }
+        }
+
+        @keyframes pulse-glow {
+            0% {
+                box-shadow: 0 8px 25px rgba(0, 132, 255, 0.6);
+            }
+
+            50% {
+                box-shadow: 0 8px 35px rgba(0, 132, 255, 0.9);
+            }
+
+            100% {
+                box-shadow: 0 8px 25px rgba(0, 132, 255, 0.6);
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        /* No desktop styles */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 720px;
+            }
+
+            .hero-content {
+                flex-direction: column;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-features {
+                justify-content: space-around;
+            }
+
+            .feature-item {
+                min-width: 140px;
+            }
+        }
+
+        /* Feedback Section - Shopee Style */
+        .feedback-section {
+            padding: 24px 0;
+            padding-bottom: 50px;
+            background-color: white;
+            border-top: 10px solid #f5f5f5;
+        }
+
+        .feedback-wrapper {
+            background: white;
+            border-radius: 4px;
+        }
+
+        .feedback-header {
+            padding: 0 0 16px 0;
+            border-bottom: 1px solid #e8e8e8;
+            margin-bottom: 12px;
+        }
+
+        .feedback-header h2 {
+            font-size: 1.125rem;
+            color: rgba(0, 0, 0, .87);
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .feedback-item {
+            display: flex;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, .09);
+            gap: 12px;
+            animation: fadeInRight 0.8s ease-out;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        .feedback-item:last-child {
+            border-bottom: none;
+        }
+
+        .feedback-avatar {
+            width: 40px;
+            height: 40px;
+            flex-shrink: 0;
+        }
+
+        .feedback-avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            background-color: #f5f5f5;
+        }
+
+        .feedback-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .feedback-user {
+            font-size: 0.75rem;
+            color: rgba(0, 0, 0, .87);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .feedback-stars {
+            color: #ee4d2d;
+            /* Shopee star color */
+            font-size: 0.7rem;
+            display: flex;
+            gap: 1px;
+        }
+
+        .feedback-meta {
+            font-size: 0.75rem;
+            color: rgba(0, 0, 0, .54);
+            margin-top: 2px;
+        }
+
+        .feedback-text {
+            position: relative;
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+            color: rgba(0, 0, 0, .87);
+            margin-top: 8px;
+            white-space: pre-wrap;
+        }
+
+        .feedback-images {
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .feedback-img-item {
+            width: 72px;
+            height: 72px;
+            cursor: pointer;
+            border: 1px solid #e8e8e8;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .feedback-img-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.2s;
+        }
+
+        .feedback-img-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .shop-response {
+            margin-top: 12px;
+            background-color: #f5f5f5;
+            padding: 12px;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            color: rgba(0, 0, 0, .87);
+        }
+
+        .shop-response-title {
+            color: #888;
+            font-size: 0.75rem;
+            margin-bottom: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="bg-particle"></div>
+        <div class="bg-particle"></div>
+        <div class="bg-particle"></div>
+        <div class="bg-particle"></div>
+    </div>
+
+    <!-- Header Mobile -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="header-top">
+                    <div class="logo">
+                        <div class="logo-glow"></div>
+                        <div class="logo-img">
+                            <img src="/images/shop-logo.jpg" alt="Thái Anh JP Logo">
+                        </div>
+                        <div class="logo-text">
+                            <h1>THÁI ANH JP</h1>
+                            <p>ĐẾN LÀ ĐẸP</p>
+                        </div>
+                    </div>
+
+                    <div class="header-cta">
+                        <a href="http://m.me/101980602523491" class="header-messenger-btn" target="_blank">
+                            <i class="fab fa-facebook-messenger"></i>
+                            <span>Chat ngay</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="countdown-container">
+                    <div class="countdown-title">ƯU ĐÃI KẾT THÚC TRONG</div>
+                    <div class="countdown">
+                        <div class="countdown-item">
+                            <div class="countdown-value" id="day">00</div>
+                            <div class="countdown-label">Giờ</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-value" id="hours">60</div>
+                            <div class="countdown-label">Phút</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-value" id="minutes">00</div>
+                            <div class="countdown-label">Giây</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Mobile -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2>Thời trang nam <span>Việt tại Nhật</span></h2>
+                    <p>Thái Anh JP là thương hiệu thời trang nam dành cho người Việt tại Nhật Bản, tập trung vào phong
+                        cách hiện đại, trẻ trung và có tính ứng dụng cao.</p>
+
+                    <div class="hero-buttons">
+                        <a href="http://m.me/101980602523491" class="hero-cta-primary" target="_blank"
+                            id="messengerBtn">
+                            <i class="fab fa-facebook-messenger"></i>
+                            <span>NHẬN TƯ VẤN NGAY</span>
+                        </a>
+
+                        <a href="#products" class="hero-cta-secondary" id="viewProductsBtn">
+                            <span>XEM SẢN PHẨM</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <div class="hero-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-tag"></i>
+                            </div>
+                            <div class="feature-text">Giá tốt nhất</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-shipping-fast"></i>
+                            </div>
+                            <div class="feature-text">Giao nhanh 2h</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-tshirt"></i>
+                            </div>
+                            <div class="feature-text">Chất lượng Nhật</div>
+                        </div>
+                    </div>
+
+                    <p>Hơn 3 năm qua, Thái Anh JP đặt mục tiêu trở thành một lựa chọn đáng tin cậy — nơi khách hàng có
+                        thể tìm thấy phong cách thời trang phù hợp với bản thân và tự tin hơn mỗi ngày.</p>
+                </div>
+
+                <div class="hero-image">
+                    <img src="/images/shop-logo.jpg" alt="Thời trang nam Thái Anh JP">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section Mobile -->
+    <section class="products-section" id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>SẢN PHẨM MỚI NHẤT CỦA THAIANHJP</h2>
+                <p>Khám phá 15 sản phẩm thời trang cao cấp với chất lượng Nhật Bản</p>
+            </div>
+
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be generated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Feedback Section -->
+    <section class="feedback-section" id="feedback">
+        <div class="container">
+            <div class="feedback-wrapper">
+                <div class="feedback-header">
+                    <h2>ĐÁNH GIÁ SẢN PHẨM (5)</h2>
+                </div>
+
+                <!-- Feedback Item 1 -->
+                <div class="feedback-item" style="animation-delay: 0.1s">
+                    <div class="feedback-avatar">
+                        <img src="https://ui-avatars.com/api/?name=Hoang+Minh&background=random" alt="avatar">
+                    </div>
+                    <div class="feedback-content">
+                        <div class="feedback-user">hoangminh_92</div>
+                        <div class="feedback-stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <div class="feedback-meta">2026 T0-25 14:30 | Phân loại hàng: Áo bomber, Size L</div>
+                        <div class="feedback-text">Áo đẹp lắm shop ơi, chất vải dày dặn, form chuẩn. Giao hàng ở Nhật mà
+                            nhanh ghê, 2 ngày là nhận được rồi. Sẽ ủng hộ shop dài dài.</div>
+                        <div class="feedback-images">
+                            <div class="feedback-img-item"><img src="/images/Áo bomber/1.png" alt="review"></div>
+                        </div>
+                        <div class="shop-response">
+                            <div class="shop-response-title">Phản Hồi Của Người Bán:</div>
+                            Cảm ơn bạn đã tin tưởng và ủng hộ Thái Anh JP ạ. Shop rất vui khi bạn hài lòng về sản phẩm
+                            ^^
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feedback Item 2 -->
+                <div class="feedback-item" style="animation-delay: 0.2s">
+                    <div class="feedback-avatar">
+                        <img src="https://ui-avatars.com/api/?name=Thuy+Trang&background=random" alt="avatar">
+                    </div>
+                    <div class="feedback-content">
+                        <div class="feedback-user">thuytrang.japan</div>
+                        <div class="feedback-stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <div class="feedback-meta">2026 T1-02 09:15 | Phân loại hàng: Áo phao lông vũ, Size M</div>
+                        <div class="feedback-text">Áo siêu ấm luôn, mặc đi làm tuyết rơi cũng không sợ lạnh. Chất phao
+                            mềm mại, không bị nặng. Đáng tiền nha mọi người.</div>
+                        <div class="feedback-images">
+                            <div class="feedback-img-item"><img src="/images/Áo phao lông vũ/4.png" alt="review"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feedback Item 3 -->
+                <div class="feedback-item" style="animation-delay: 0.3s">
+                    <div class="feedback-avatar">
+                        <img src="https://ui-avatars.com/api/?name=Duc+Manh&background=random" alt="avatar">
+                    </div>
+                    <div class="feedback-content">
+                        <div class="feedback-user">ducmanh_tokyo</div>
+                        <div class="feedback-stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <div class="feedback-meta">2026 T1-10 18:45 | Phân loại hàng: Quần âu, Size 30</div>
+                        <div class="feedback-text">Quần vải đẹp, đường may chắc chắn lắm. Mặc đi phỏng vấn hay đi làm
+                            đều ok. Shop tư vấn size chuẩn, mình cao 1m7 nặng 60kg mặc size 30 vừa in.</div>
+                    </div>
+                </div>
+
+                <!-- Feedback Item 4 -->
+                <div class="feedback-item" style="animation-delay: 0.4s">
+                    <div class="feedback-avatar">
+                        <img src="https://ui-avatars.com/api/?name=Nguyen+Van&background=random" alt="avatar">
+                    </div>
+                    <div class="feedback-content">
+                        <div class="feedback-user">nguyenvan.k</div>
+                        <div class="feedback-stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <div class="feedback-meta">2026 T1-15 12:20 | Phân loại hàng: Áo hoodie, Size XL</div>
+                        <div class="feedback-text">Mua tặng người yêu mà ổng thích mê. Chất nỉ bông dày dặn, hình in sắc
+                            nét không bị vỡ. Đóng gói cẩn thận 2 lớp.</div>
+                        <div class="feedback-images">
+                            <div class="feedback-img-item"><img src="/images/Áo hoodie/13.png" alt="review"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feedback Item 5 -->
+                <div class="feedback-item" style="animation-delay: 0.5s">
+                    <div class="feedback-avatar">
+                        <img src="https://ui-avatars.com/api/?name=Tuan+Hung&background=random" alt="avatar">
+                    </div>
+                    <div class="feedback-content">
+                        <div class="feedback-user">tuanhung_osaka</div>
+                        <div class="feedback-stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <div class="feedback-meta">2026 T1-20 08:10 | Phân loại hàng: Set thể thao, Size L</div>
+                        <div class="feedback-text">Bộ nỉ đẹp, co giãn tốt, mặc đi tập hay ở nhà đều thoải mái. Shop uy
+                            tín, vote 5 sao cho chất lượng và thái độ phục vụ.</div>
+                        <div class="shop-response">
+                            <div class="shop-response-title">Phản Hồi Của Người Bán:</div>
+                            Cảm ơn anh Hùng đã feedback ạ. Mong anh tiếp tục ủng hộ shop trong các BST tới nha!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section Mobile -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Vì sao chọn Thái Anh JP?</h2>
+                    <p>Với hơn 3 năm kinh nghiệm trong ngành thời trang tại Nhật Bản, Thái Anh JP hiểu rõ nhu cầu và
+                        phong cách của người Việt tại xứ sở hoa anh đào.</p>
+                    <p>Chúng tôi không chỉ mang đến những sản phẩm chất lượng mà còn là sự tự tin và phong cách riêng
+                        biệt cho mỗi khách hàng.</p>
+
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">3+</div>
+                            <div class="stat-label">Năm kinh nghiệm</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">5000+</div>
+                            <div class="stat-label">Khách hàng</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">100%</div>
+                            <div class="stat-label">Chất lượng</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                        alt="Về Thái Anh JP">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Messenger Button Fixed Mobile - EXTREME SHAKE -->
+    <div class="messenger-fixed">
+        <a href="http://m.me/101980602523491" class="messenger-fixed-btn" target="_blank">
+            <i class="fab fa-facebook-messenger"></i>
+        </a>
+    </div>
+
+    <!-- Footer Mobile -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">THÁI ANH <span>JP</span></div>
+                <p>Thương hiệu thời trang nam Việt tại Nhật Bản</p>
+                <p>Phong cách hiện đại - Chất lượng Nhật Bản</p>
+
+                <div class="footer-contact">
+                    <a href="http://m.me/101980602523491" target="_blank"><i class="fab fa-facebook-messenger"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                &copy; 2026 Thái Anh JP - Đến Là Đẹp.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Product data with CTA instead of price
+        const products = [
+            {
+                name: "Áo bomber",
+                description: "Áo bomber phong cách streetwear với chất liệu chống nước nhẹ, form dáng chuẩn, phù hợp mọi hoạt động.",
+                image: "/images/Áo bomber/1.png",
+                badge: "Bán chạy"
+            },
+            {
+                name: "Áo da bomber",
+                description: "Bomber da thật cao cấp với thiết kế sang trọng, giữ ấm tốt và tạo phong cách mạnh mẽ.",
+                image: "/images/Áo da bomber/3.png",
+                badge: "Cao cấp"
+            },
+            {
+                name: "Áo hoodie",
+                description: "Hoodie chất liệu nỉ mềm mại, thiết kế unisex trẻ trung, phù hợp cho mùa thu đông.",
+                image: "/images/Áo hoodie/13.png",
+                badge: "Mới"
+            },
+            {
+                name: "Áo khoác Jeans",
+                description: "Áo khoác jeans bền bỉ với công nghệ giặt vintage, tạo phong cách cá tính và thời trang.",
+                image: "/images/Áo khoác Jeans/2.png",
+                badge: "Phong cách"
+            },
+            {
+                name: "Áo khoác nhung",
+                description: "Áo khoác nhung lụa cao cấp, phù hợp cho các dịp sang trọng, tạo vẻ ngoài quý phái.",
+                image: "/images/Áo khoác nhung/8.png",
+                badge: "Sang trọng"
+            },
+            {
+                name: "Áo phao dáng dài",
+                description: "Áo phao dáng dài giữ ấm toàn thân, thiết kế hiện đại với khả năng chống nước vượt trội.",
+                image: "/images/Áo phao dáng dài/3.png",
+                badge: "Giữ ấm"
+            },
+            {
+                name: "Áo phao kẻ tay",
+                description: "Áo phao thiết kế kẻ tay độc đáo, chất liệu siêu nhẹ nhưng vẫn đảm bảo khả năng giữ nhiệt.",
+                image: "/images/Áo phao kẻ tay/4.png",
+                badge: "Độc đáo"
+            },
+            {
+                name: "Áo phao lông vũ",
+                description: "Áo phao lông vũ thiên nga cao cấp, nhẹ nhưng ấm áp vượt trội, thiết kế thời trang.",
+                image: "/images/Áo phao lông vũ/4.png",
+                badge: "Cao cấp"
+            },
+            {
+                name: "Áo sweater bearbrick",
+                description: "Sweater bear dễ thương với chất liệu cotton mềm mại, thiết kế unisex dễ phối đồ.",
+                image: "/images/Áo sweater bearbrick/2.png",
+                badge: "Dễ thương"
+            },
+            {
+                name: "Quần âu",
+                description: "Quần âu cao cấp với form dáng chuẩn, chất liệu không nhăn, phù hợp công sở và dự tiệc.",
+                image: "/images/Quần âu/2.png",
+                badge: "Công sở"
+            },
+            {
+                name: "Quần jeans ống côn",
+                description: "Quần jeans ống côn phong cách Hàn Quốc, chất liệu co giãn thoải mái vận động.",
+                image: "/images/Quần jeans ống côn/3.png",
+                badge: "Hàn Quốc"
+            },
+            {
+                name: "Quần jeans suông",
+                description: "Jeans suông phong cách streetwear, chất liệu denim cao cấp, thiết kế unisex cá tính.",
+                image: "/images/Quần jeans suông/2.png",
+                badge: "Streetwear"
+            },
+            {
+                name: "Quần nỉ nhung",
+                description: "Quần nỉ nhung mềm mại, giữ ấm tốt, thiết kế ống suông thời trang cho mùa đông.",
+                image: "/images/Quần nỉ nhung/1.png",
+                badge: "Ấm áp"
+            },
+            {
+                name: "Quần skinny jeans",
+                description: "Skinny jeans ôm vừa vặn, chất liệu co giãn 4 chiều, tạo dáng chuẩn và thoải mái.",
+                image: "/images/Quần skinny jeans/1.png",
+                badge: "Ôm dáng"
+            },
+            {
+                name: "Set thể thao",
+                description: "Set đồ thể thao chất liệu thấm hút mồ hôi, thiết kế năng động và thoải mái khi vận động.",
+                image: "/images/Set thể thao/2.png",
+                badge: "Thể thao"
+            }
+        ];
+
+        // Countdown timer
+        let countdownMinutes = 60;
+        let countdownSeconds = 0;
+
+        function updateCountdown() {
+            const hoursElement = document.getElementById('hours');
+            const minutesElement = document.getElementById('minutes');
+
+            // Format values to always show 2 digits
+            const formattedMinutes = countdownMinutes < 10 ? '0' + countdownMinutes : countdownMinutes;
+            const formattedSeconds = countdownSeconds < 10 ? '0' + countdownSeconds : countdownSeconds;
+
+            hoursElement.textContent = formattedMinutes;
+            minutesElement.textContent = formattedSeconds;
+
+            // Add intense pulse animation
+            hoursElement.style.animation = 'pulse 0.5s, zoom-wild 2s infinite, shake-number 6s infinite';
+            minutesElement.style.animation = 'pulse 0.5s, zoom-wild 2s infinite, shake-number 6s infinite';
+
+            // Remove pulse animation after 500ms
+            setTimeout(() => {
+                hoursElement.style.animation = 'zoom-wild 2s infinite, shake-number 6s infinite';
+                minutesElement.style.animation = 'zoom-wild 2s infinite, shake-number 6s infinite';
+            }, 500);
+
+            // Decrement seconds
+            if (countdownSeconds === 0) {
+                if (countdownMinutes === 0) {
+                    // Countdown finished
+                    document.querySelector('.countdown-title').textContent = "ƯU ĐÃI ĐÃ KẾT THÚC!";
+                    hoursElement.textContent = "00";
+                    minutesElement.textContent = "00";
+                    return;
+                } else {
+                    countdownMinutes--;
+                    countdownSeconds = 59;
+                }
+            } else {
+                countdownSeconds--;
+            }
+        }
+
+        // Initialize countdown - faster update for more intense effect
+        setInterval(updateCountdown, 1000);
+
+        // Generate product cards
+        function generateProductCards() {
+            const productsGrid = document.getElementById('productsGrid');
+
+            products.forEach((product, index) => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.style.animationDelay = `${index * 0.1}s`;
+
+                productCard.innerHTML = `
+                    <div class="product-image">
+                        <img src="${product.image}" alt="${product.name}" loading="lazy">
+                        <div class="product-badge">${product.badge}</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">${product.name}</h3>
+                        <p class="product-description">${product.description}</p>
+                        <div class="product-cta">
+                            <a href="http://m.me/101980602523491" class="product-cta-btn" target="_blank">
+                                <i class="fab fa-facebook-messenger"></i>
+                                Nhận giá qua Messenger
+                            </a>
+                        </div>
+                    </div>
+                `;
+
+                productsGrid.appendChild(productCard);
+
+                // Add fire particles effect for each product card
+                setTimeout(() => {
+                    addFireParticles(productCard);
+                }, 500 + index * 100);
+            });
+        }
+
+        // Add fire/particles effect to product cards
+        function addFireParticles(productCard) {
+            // Create fire particles - MORE particles for intense effect
+            for (let i = 0; i < 15; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'fire-particle';
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                particle.style.animation = `fire-particle ${1 + Math.random() * 2}s infinite ${Math.random() * 1.5}s`;
+                particle.style.opacity = '0';
+
+                // Random size and color - LARGER particles
+                const size = 8 + Math.random() * 15;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+
+                // Random color between gold and orange - BRIGHTER colors
+                const colors = ['#f9c74f', '#ff9a3c', '#ff6b35', '#f3722c', '#ff0000'];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.background = `radial-gradient(circle, ${color} 0%, transparent 70%)`;
+
+                productCard.appendChild(particle);
+            }
+
+            // Animate particles on hover - MORE intense
+            productCard.addEventListener('mouseenter', () => {
+                const particles = productCard.querySelectorAll('.fire-particle');
+                particles.forEach(particle => {
+                    particle.style.opacity = '1';
+                    particle.style.animationPlayState = 'running';
+                    // Randomize animation speed for more dynamic effect
+                    particle.style.animationDuration = `${0.5 + Math.random() * 1.5}s`;
+                });
+            });
+
+            productCard.addEventListener('mouseleave', () => {
+                const particles = productCard.querySelectorAll('.fire-particle');
+                particles.forEach(particle => {
+                    particle.style.opacity = '0';
+                    particle.style.animationPlayState = 'paused';
+                });
+            });
+
+            // For mobile touch events
+            productCard.addEventListener('touchstart', () => {
+                const particles = productCard.querySelectorAll('.fire-particle');
+                particles.forEach(particle => {
+                    particle.style.opacity = '1';
+                    particle.style.animationPlayState = 'running';
+                    particle.style.animationDuration = `${0.5 + Math.random() * 1.5}s`;
+                });
+            });
+
+            productCard.addEventListener('touchend', () => {
+                setTimeout(() => {
+                    const particles = productCard.querySelectorAll('.fire-particle');
+                    particles.forEach(particle => {
+                        particle.style.opacity = '0';
+                        particle.style.animationPlayState = 'paused';
+                    });
+                }, 1000);
+            });
+        }
+
+        // Smooth scroll to products section
+        function setupSmoothScroll() {
+            const viewProductsBtn = document.getElementById('viewProductsBtn');
+
+            if (viewProductsBtn) {
+                viewProductsBtn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const productsSection = document.getElementById('products');
+
+                    if (productsSection) {
+                        // Smooth scroll to products section
+                        productsSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+
+                        // Optional: Add animation effect when scrolling to products
+                        setTimeout(() => {
+                            const productCards = document.querySelectorAll('.product-card');
+                            productCards.forEach((card, index) => {
+                                setTimeout(() => {
+                                    card.style.transform = 'translateY(0)';
+                                    card.style.opacity = '1';
+                                    // Add extra shake when cards appear
+                                    card.style.animation = 'fadeInUp 0.8s ease-out, card-shake 20s infinite';
+                                }, index * 100);
+                            });
+                        }, 300);
+                    }
+                });
+            }
+        }
+
+        // Animate product cards on scroll
+        function animateOnScroll() {
+            const productCards = document.querySelectorAll('.product-card');
+
+            productCards.forEach(card => {
+                const cardTop = card.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                if (cardTop < windowHeight - 100) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+        }
+
+        // Messenger button animation - MORE intense
+        function animateMessengerButton() {
+            const messengerBtn = document.getElementById('messengerBtn');
+
+            // Add intense pulsing animation every 3 seconds
+            if (messengerBtn) {
+                setInterval(() => {
+                    messengerBtn.style.animation = 'none';
+                    setTimeout(() => {
+                        messengerBtn.style.animation = 'pulse-glow 1s infinite, shake-earthquake 4s infinite, zoom-crazy-fast 3s infinite, color-pulse 7s infinite';
+                    }, 10);
+                }, 3000);
+            }
+        }
+
+        // Create additional floating particles - MORE particles
+        function createFloatingParticles() {
+            const particlesContainer = document.querySelector('.animated-bg');
+            if (!particlesContainer) return;
+
+            // Create MORE particles for the background
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'bg-particle';
+
+                // Random position
+                particle.style.top = `${Math.random() * 100}%`;
+                particle.style.left = `${Math.random() * 100}%`;
+
+                // Random size - LARGER particles
+                const size = 80 + Math.random() * 300;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+
+                // Random animation - FASTER animation
+                const duration = 10 + Math.random() * 20;
+                const delay = Math.random() * 15;
+                particle.style.animationDuration = `${duration}s`;
+                particle.style.animationDelay = `${delay}s`;
+
+                // Random color - BRIGHTER colors
+                const colors = [
+                    'radial-gradient(circle, rgba(249,199,79,0.3) 0%, rgba(249,199,79,0) 70%)',
+                    'radial-gradient(circle, rgba(26,95,180,0.25) 0%, rgba(26,95,180,0) 70%)',
+                    'radial-gradient(circle, rgba(15,26,46,0.2) 0%, rgba(15,26,46,0) 70%)',
+                    'radial-gradient(circle, rgba(255,0,0,0.15) 0%, rgba(255,0,0,0) 70%)'
+                ];
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Add EXTREME random button animations
+        function addExtremeButtonAnimations() {
+            const buttons = document.querySelectorAll('.hero-cta-primary, .hero-cta-secondary, .header-messenger-btn, .product-cta-btn, .messenger-fixed-btn');
+
+            buttons.forEach(button => {
+                // Add random extreme shake animation at shorter intervals
+                setInterval(() => {
+                    if (!button.matches(':hover') && !button.matches(':active')) {
+                        button.style.animation = 'none';
+                        setTimeout(() => {
+                            // Randomly apply different EXTREME animations
+                            const animations = [
+                                'shake-violent 0.8s',
+                                'zoom-crazy 0.6s',
+                                'shake-earthquake 1s'
+                            ];
+                            const randomAnim = animations[Math.floor(Math.random() * animations.length)];
+                            button.style.animation = randomAnim;
+                        }, 10);
+                    }
+                }, 4000 + Math.random() * 3000);
+            });
+        }
+
+        // Add random section vibrations
+        function addSectionVibrations() {
+            const sections = document.querySelectorAll('section, header, footer');
+
+            sections.forEach(section => {
+                // Random vibrations for sections
+                setInterval(() => {
+                    section.style.animation = 'none';
+                    setTimeout(() => {
+                        section.style.animation = '';
+                    }, 10);
+                }, 15000 + Math.random() * 10000);
+            });
+        }
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            generateProductCards();
+            animateMessengerButton();
+            setupSmoothScroll();
+            createFloatingParticles();
+            addExtremeButtonAnimations();
+            addSectionVibrations();
+
+            // Initial animation check
+            animateOnScroll();
+
+            // Add scroll event listener for animations
+            window.addEventListener('scroll', animateOnScroll);
+
+            // Add click event to all messenger buttons
+            const messengerButtons = document.querySelectorAll('.header-messenger-btn, .hero-cta-primary, .product-cta-btn, .messenger-fixed-btn');
+            messengerButtons.forEach(button => {
+                button.addEventListener('click', function (e) {
+                    // Optional: Add analytics tracking here
+                    console.log('Messenger button clicked - EXTREME VERSION');
+
+                    // Add extra shake effect on click
+                    this.style.animation = 'shake-violent 0.5s, zoom-crazy 0.3s';
+                    setTimeout(() => {
+                        this.style.animation = '';
+                    }, 500);
+                });
+            });
+
+            // Prevent zoom on double tap
+            let lastTouchEnd = 0;
+            document.addEventListener('touchend', function (event) {
+                const now = (new Date()).getTime();
+                if (now - lastTouchEnd <= 300) {
+                    event.preventDefault();
+                }
+                lastTouchEnd = now;
+            }, false);
+        });
+    </script>
+</body>
+
+</html>
