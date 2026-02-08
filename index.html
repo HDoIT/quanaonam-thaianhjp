@@ -3234,6 +3234,8 @@
             const hoursElement = document.getElementById('hours');
             const minutesElement = document.getElementById('minutes');
 
+            if (!hoursElement || !minutesElement) return;
+
             // Format values to always show 2 digits
             const formattedMinutes = countdownMinutes < 10 ? '0' + countdownMinutes : countdownMinutes;
             const formattedSeconds = countdownSeconds < 10 ? '0' + countdownSeconds : countdownSeconds;
@@ -3241,21 +3243,12 @@
             hoursElement.textContent = formattedMinutes;
             minutesElement.textContent = formattedSeconds;
 
-            // Add intense pulse animation
-            hoursElement.style.animation = 'pulse 0.5s, zoom-wild 2s infinite, shake-number 6s infinite';
-            minutesElement.style.animation = 'pulse 0.5s, zoom-wild 2s infinite, shake-number 6s infinite';
-
-            // Remove pulse animation after 500ms
-            setTimeout(() => {
-                hoursElement.style.animation = 'zoom-wild 2s infinite, shake-number 6s infinite';
-                minutesElement.style.animation = 'zoom-wild 2s infinite, shake-number 6s infinite';
-            }, 500);
-
             // Decrement seconds
             if (countdownSeconds === 0) {
                 if (countdownMinutes === 0) {
                     // Countdown finished
-                    document.querySelector('.countdown-title').textContent = "ƯU ĐÃI ĐÃ KẾT THÚC!";
+                    const title = document.querySelector('.countdown-title');
+                    if (title) title.textContent = "ƯU ĐÃI ĐÃ KẾT THÚC!";
                     hoursElement.textContent = "00";
                     minutesElement.textContent = "00";
                     return;
@@ -3268,106 +3261,43 @@
             }
         }
 
-        // Initialize countdown - faster update for more intense effect
+        // Initialize countdown
         setInterval(updateCountdown, 1000);
 
         // Generate product cards
         function generateProductCards() {
             const productsGrid = document.getElementById('productsGrid');
+            if (!productsGrid) return;
 
-            products.forEach((product, index) => {
-                const productCard = document.createElement('div');
-                productCard.className = 'product-card';
-                productCard.style.animationDelay = `${index * 0.1}s`;
+            // Generate HTML string first to minimize DOM manipulation
+            const productsHTML = products.map((product, index) => {
+                // Calculate delay for staggered animation via CSS only
+                const delay = (index % 10) * 0.1;
 
-                productCard.innerHTML = `
-                    <div class="product-image">
-                        <img src="${product.image}" alt="${product.name}" loading="lazy">
-                        <div class="product-badge">${product.badge}</div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">${product.name}</h3>
-                        <p class="product-description">${product.description}</p>
-                        <div class="product-cta">
-                            <a href="http://m.me/101980602523491" class="product-cta-btn" target="_blank">
-                                <i class="fab fa-facebook-messenger"></i>
-                                Nhận giá qua Messenger
-                            </a>
+                return `
+                    <div class="product-card" style="animation-delay: ${delay}s">
+                        <div class="product-image">
+                            <img src="${product.image}" alt="${product.name}" loading="lazy">
+                            <div class="product-badge">${product.badge}</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">${product.name}</h3>
+                            <p class="product-description">${product.description}</p>
+                            <div class="product-cta">
+                                <a href="http://m.me/101980602523491" class="product-cta-btn" target="_blank">
+                                    <i class="fab fa-facebook-messenger"></i>
+                                    Nhận giá qua Messenger
+                                </a>
+                            </div>
                         </div>
                     </div>
                 `;
+            }).join('');
 
-                productsGrid.appendChild(productCard);
+            productsGrid.innerHTML = productsHTML;
 
-                // Add fire particles effect for each product card
-                setTimeout(() => {
-                    addFireParticles(productCard);
-                }, 500 + index * 100);
-            });
-        }
-
-        // Add fire/particles effect to product cards
-        function addFireParticles(productCard) {
-            // Create fire particles - MORE particles for intense effect
-            for (let i = 0; i < 15; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'fire-particle';
-                particle.style.left = `${Math.random() * 100}%`;
-                particle.style.top = `${Math.random() * 100}%`;
-                particle.style.animation = `fire-particle ${1 + Math.random() * 2}s infinite ${Math.random() * 1.5}s`;
-                particle.style.opacity = '0';
-
-                // Random size and color - LARGER particles
-                const size = 8 + Math.random() * 15;
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-
-                // Random color between gold and orange - BRIGHTER colors
-                const colors = ['#f9c74f', '#ff9a3c', '#ff6b35', '#f3722c', '#ff0000'];
-                const color = colors[Math.floor(Math.random() * colors.length)];
-                particle.style.background = `radial-gradient(circle, ${color} 0%, transparent 70%)`;
-
-                productCard.appendChild(particle);
-            }
-
-            // Animate particles on hover - MORE intense
-            productCard.addEventListener('mouseenter', () => {
-                const particles = productCard.querySelectorAll('.fire-particle');
-                particles.forEach(particle => {
-                    particle.style.opacity = '1';
-                    particle.style.animationPlayState = 'running';
-                    // Randomize animation speed for more dynamic effect
-                    particle.style.animationDuration = `${0.5 + Math.random() * 1.5}s`;
-                });
-            });
-
-            productCard.addEventListener('mouseleave', () => {
-                const particles = productCard.querySelectorAll('.fire-particle');
-                particles.forEach(particle => {
-                    particle.style.opacity = '0';
-                    particle.style.animationPlayState = 'paused';
-                });
-            });
-
-            // For mobile touch events
-            productCard.addEventListener('touchstart', () => {
-                const particles = productCard.querySelectorAll('.fire-particle');
-                particles.forEach(particle => {
-                    particle.style.opacity = '1';
-                    particle.style.animationPlayState = 'running';
-                    particle.style.animationDuration = `${0.5 + Math.random() * 1.5}s`;
-                });
-            });
-
-            productCard.addEventListener('touchend', () => {
-                setTimeout(() => {
-                    const particles = productCard.querySelectorAll('.fire-particle');
-                    particles.forEach(particle => {
-                        particle.style.opacity = '0';
-                        particle.style.animationPlayState = 'paused';
-                    });
-                }, 1000);
-            });
+            // Observe newly added items
+            observeProducts();
         }
 
         // Smooth scroll to products section
@@ -3380,66 +3310,55 @@
                     const productsSection = document.getElementById('products');
 
                     if (productsSection) {
-                        // Smooth scroll to products section
                         productsSection.scrollIntoView({
                             behavior: 'smooth',
                             block: 'start'
                         });
-
-                        // Optional: Add animation effect when scrolling to products
-                        setTimeout(() => {
-                            const productCards = document.querySelectorAll('.product-card');
-                            productCards.forEach((card, index) => {
-                                setTimeout(() => {
-                                    card.style.transform = 'translateY(0)';
-                                    card.style.opacity = '1';
-                                    // Add extra shake when cards appear
-                                    card.style.animation = 'fadeInUp 0.8s ease-out, card-shake 20s infinite';
-                                }, index * 100);
-                            });
-                        }, 300);
                     }
                 });
             }
         }
 
-        // Animate product cards on scroll
-        function animateOnScroll() {
+        // Optimize animation on scroll using IntersectionObserver
+        function observeProducts() {
             const productCards = document.querySelectorAll('.product-card');
 
-            productCards.forEach(card => {
-                const cardTop = card.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
 
-                if (cardTop < windowHeight - 100) {
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        // Add simple fade-in animation
+                        entry.target.style.animation = `fadeInUp 0.6s ease-out forwards ${entry.target.style.animationDelay}`;
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            productCards.forEach(card => {
+                observer.observe(card);
+            });
+
+            // Also observe feedback items
+            const feedbackItems = document.querySelectorAll('.feedback-item');
+            feedbackItems.forEach(item => {
+                observer.observe(item);
             });
         }
 
-        // Messenger button animation - MORE intense
-        function animateMessengerButton() {
-            const messengerBtn = document.getElementById('messengerBtn');
-
-            // Add intense pulsing animation every 3 seconds
-            if (messengerBtn) {
-                setInterval(() => {
-                    messengerBtn.style.animation = 'none';
-                    setTimeout(() => {
-                        messengerBtn.style.animation = 'pulse-glow 1s infinite, shake-earthquake 4s infinite, zoom-crazy-fast 3s infinite, color-pulse 7s infinite';
-                    }, 10);
-                }, 3000);
-            }
-        }
-
-        // Create additional floating particles - MORE particles
+        // Create simplified floating particles (lightweight)
         function createFloatingParticles() {
             const particlesContainer = document.querySelector('.animated-bg');
             if (!particlesContainer) return;
 
-            // Create MORE particles for the background
-            for (let i = 0; i < 20; i++) {
+            // Limit to just 5 particles for background ambience
+            for (let i = 0; i < 5; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'bg-particle';
 
@@ -3447,100 +3366,26 @@
                 particle.style.top = `${Math.random() * 100}%`;
                 particle.style.left = `${Math.random() * 100}%`;
 
-                // Random size - LARGER particles
-                const size = 80 + Math.random() * 300;
+                // Random size
+                const size = 50 + Math.random() * 100;
                 particle.style.width = `${size}px`;
                 particle.style.height = `${size}px`;
 
-                // Random animation - FASTER animation
-                const duration = 10 + Math.random() * 20;
-                const delay = Math.random() * 15;
-                particle.style.animationDuration = `${duration}s`;
-                particle.style.animationDelay = `${delay}s`;
-
-                // Random color - BRIGHTER colors
-                const colors = [
-                    'radial-gradient(circle, rgba(249,199,79,0.3) 0%, rgba(249,199,79,0) 70%)',
-                    'radial-gradient(circle, rgba(26,95,180,0.25) 0%, rgba(26,95,180,0) 70%)',
-                    'radial-gradient(circle, rgba(15,26,46,0.2) 0%, rgba(15,26,46,0) 70%)',
-                    'radial-gradient(circle, rgba(255,0,0,0.15) 0%, rgba(255,0,0,0) 70%)'
-                ];
-                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                // CSS Animation handles movement
+                particle.style.animationDuration = `${15 + Math.random() * 20}s`;
+                particle.style.animationDelay = `${Math.random() * 5}s`;
 
                 particlesContainer.appendChild(particle);
             }
         }
 
-        // Add EXTREME random button animations
-        function addExtremeButtonAnimations() {
-            const buttons = document.querySelectorAll('.hero-cta-primary, .hero-cta-secondary, .header-messenger-btn, .product-cta-btn, .messenger-fixed-btn');
-
-            buttons.forEach(button => {
-                // Add random extreme shake animation at shorter intervals
-                setInterval(() => {
-                    if (!button.matches(':hover') && !button.matches(':active')) {
-                        button.style.animation = 'none';
-                        setTimeout(() => {
-                            // Randomly apply different EXTREME animations
-                            const animations = [
-                                'shake-violent 0.8s',
-                                'zoom-crazy 0.6s',
-                                'shake-earthquake 1s'
-                            ];
-                            const randomAnim = animations[Math.floor(Math.random() * animations.length)];
-                            button.style.animation = randomAnim;
-                        }, 10);
-                    }
-                }, 4000 + Math.random() * 3000);
-            });
-        }
-
-        // Add random section vibrations
-        function addSectionVibrations() {
-            const sections = document.querySelectorAll('section, header, footer');
-
-            sections.forEach(section => {
-                // Random vibrations for sections
-                setInterval(() => {
-                    section.style.animation = 'none';
-                    setTimeout(() => {
-                        section.style.animation = '';
-                    }, 10);
-                }, 15000 + Math.random() * 10000);
-            });
-        }
-
         // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', function () {
             generateProductCards();
-            animateMessengerButton();
             setupSmoothScroll();
             createFloatingParticles();
-            addExtremeButtonAnimations();
-            addSectionVibrations();
 
-            // Initial animation check
-            animateOnScroll();
-
-            // Add scroll event listener for animations
-            window.addEventListener('scroll', animateOnScroll);
-
-            // Add click event to all messenger buttons
-            const messengerButtons = document.querySelectorAll('.header-messenger-btn, .hero-cta-primary, .product-cta-btn, .messenger-fixed-btn');
-            messengerButtons.forEach(button => {
-                button.addEventListener('click', function (e) {
-                    // Optional: Add analytics tracking here
-                    console.log('Messenger button clicked - EXTREME VERSION');
-
-                    // Add extra shake effect on click
-                    this.style.animation = 'shake-violent 0.5s, zoom-crazy 0.3s';
-                    setTimeout(() => {
-                        this.style.animation = '';
-                    }, 500);
-                });
-            });
-
-            // Prevent zoom on double tap
+            // Prevent zoom on double tap (mobile usability)
             let lastTouchEnd = 0;
             document.addEventListener('touchend', function (event) {
                 const now = (new Date()).getTime();
@@ -3549,6 +3394,15 @@
                 }
                 lastTouchEnd = now;
             }, false);
+
+            // Simple click effect for buttons without layout thrashing
+            const messengerButtons = document.querySelectorAll('.header-messenger-btn, .hero-cta-primary, .product-cta-btn, .messenger-fixed-btn');
+            messengerButtons.forEach(button => {
+                button.addEventListener('click', function (e) {
+                    // Just let the default CSS :active state handle it
+                    // or add a light class
+                });
+            });
         });
     </script>
 </body>
