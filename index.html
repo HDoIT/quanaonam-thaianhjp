@@ -158,9 +158,10 @@
 
         .header-content {
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
             gap: 15px;
+            width: 100%;
         }
 
         .header-top {
@@ -208,6 +209,13 @@
             opacity: 0.9;
         }
 
+        /* Hide logo text on mobile */
+        @media (max-width: 767px) {
+            .logo-text {
+                display: none;
+            }
+        }
+
         .header-cta {
             display: flex;
             align-items: center;
@@ -239,21 +247,22 @@
         }
 
         .countdown-container {
-            width: 100%;
+            flex: 1;
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
             border-radius: 10px;
-            padding: 12px 15px;
+            padding: 8px 12px;
             text-align: center;
             animation: slideInRight 1s ease-out;
             border: 1px solid rgba(255, 255, 255, 0.2);
             position: relative;
             overflow: hidden;
+            max-width: 300px;
         }
 
         .countdown-title {
-            font-size: 0.85rem;
-            margin-bottom: 8px;
+            font-size: 0.7rem;
+            margin-bottom: 5px;
             opacity: 0.9;
         }
 
@@ -270,11 +279,11 @@
         }
 
         .countdown-value {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: 700;
             background: rgba(255, 255, 255, 0.25);
-            width: 45px;
-            height: 45px;
+            width: 35px;
+            height: 35px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -285,14 +294,14 @@
         }
 
         .countdown-label {
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             text-transform: uppercase;
             opacity: 0.8;
         }
 
         /* Hero Mobile */
         .hero {
-            padding: 40px 0;
+            /* padding: 40px 0; */
             background: linear-gradient(135deg, rgba(245, 247, 250, 0.9) 0%, rgba(228, 237, 245, 0.9) 100%);
             position: relative;
             overflow: hidden;
@@ -493,6 +502,151 @@
             width: 100%;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Expanding Panel Slider */
+        .expanding-panels {
+            display: flex;
+            width: 100%;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .panel {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 35vh;
+            border-radius: 0;
+            color: #fff;
+            cursor: pointer;
+            flex: 0.5;
+            position: relative;
+            transition: all 700ms ease-in;
+            overflow: hidden;
+        }
+
+        .panel h3 {
+            font-size: 1.2rem;
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            margin: 0;
+            opacity: 0;
+            transition: opacity 0.3s ease-in 0.4s;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .panel.active {
+            flex: 5;
+        }
+
+        .panel.active h3 {
+            opacity: 1;
+        }
+
+        .panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.5) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease-in;
+        }
+
+        .panel.active::before {
+            opacity: 1;
+        }
+
+        /* Image Popup Modal */
+        .image-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        .image-popup.active {
+            display: flex;
+        }
+
+        .image-popup-content {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            touch-action: none;
+        }
+
+        .image-popup-img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+            transform-origin: center center;
+        }
+
+        .image-popup-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.5rem;
+            z-index: 10000;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .image-popup-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .image-popup-title {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-align: center;
+            padding: 10px 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         /* Products Section Mobile */
@@ -1161,6 +1315,32 @@
             .products-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            .countdown-container {
+                max-width: none;
+            }
+
+            .countdown-title {
+                font-size: 0.85rem;
+            }
+
+            .countdown-value {
+                font-size: 1.5rem;
+                width: 45px;
+                height: 45px;
+            }
+
+            .countdown-label {
+                font-size: 0.7rem;
+            }
+
+            .panel h3 {
+                font-size: 1.5rem;
+            }
+
+            .panel {
+                height: 60vh;
+            }
         }
     </style>
 </head>
@@ -1177,22 +1357,13 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <div class="header-top">
-                    <div class="logo">
-                        <div class="logo-img">
-                            <img src="/images/shop-logo.jpg" alt="Thái Anh JP Logo">
-                        </div>
-                        <div class="logo-text">
-                            <h1>THÁI ANH JP</h1>
-                            <p>ĐẾN LÀ ĐẸP</p>
-                        </div>
+                <div class="logo">
+                    <div class="logo-img">
+                        <img src="/images/shop-logo.jpg" alt="Thái Anh JP Logo">
                     </div>
-
-                    <div class="header-cta">
-                        <a href="http://m.me/101980602523491" class="header-messenger-btn" target="_blank">
-                            <i class="fab fa-facebook-messenger"></i>
-                            <span>Chat ngay</span>
-                        </a>
+                    <div class="logo-text">
+                        <h1>THÁI ANH JP</h1>
+                        <p>ĐẾN LÀ ĐẸP</p>
                     </div>
                 </div>
 
@@ -1209,6 +1380,13 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="header-cta">
+                    <a href="http://m.me/101980602523491" class="header-messenger-btn" target="_blank">
+                        <i class="fab fa-facebook-messenger"></i>
+                        <span>Chat ngay</span>
+                    </a>
+                </div>
             </div>
         </div>
     </header>
@@ -1218,10 +1396,15 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h2>Thời trang nam <span>Việt tại Nhật</span></h2>
-                    <p>Thái Anh JP là thương hiệu thời trang nam dành cho người Việt tại Nhật Bản, tập trung vào phong
-                        cách hiện đại, trẻ trung và có tính ứng dụng cao.</p>
-
+                    <!-- Expanding Panel Slider -->
+                    <div class="expanding-panels">
+                        <div class="panel active" style="background-image: url('/images/banner-sales.png')">
+                            <h3>Sale 60% các sản phẩm</h3>
+                        </div>
+                        <div class="panel" style="background-image: url('/images/banner.png')">
+                            <h3>Thời trang nam Việt tại Nhật</h3>
+                        </div>
+                    </div>
                     <div class="hero-buttons">
                         <a href="http://m.me/101980602523491" class="hero-cta-primary" target="_blank">
                             <i class="fab fa-facebook-messenger"></i>
@@ -1262,6 +1445,8 @@
                 <div class="hero-image">
                     <img src="/images/shop-logo.jpg" alt="Thời trang nam Thái Anh JP">
                 </div>
+
+
             </div>
         </div>
     </section>
@@ -1434,6 +1619,17 @@
         <a href="http://m.me/101980602523491" class="messenger-fixed-btn" target="_blank">
             <i class="fab fa-facebook-messenger"></i>
         </a>
+    </div>
+
+    <!-- Image Popup Modal -->
+    <div class="image-popup" id="imagePopup">
+        <div class="image-popup-close" id="closePopup">
+            <i class="fas fa-times"></i>
+        </div>
+        <div class="image-popup-content" id="popupContent">
+            <img src="" alt="" class="image-popup-img" id="popupImage">
+        </div>
+        <div class="image-popup-title" id="popupTitle"></div>
     </div>
 
     <!-- Footer Mobile -->
@@ -1662,6 +1858,128 @@
 
             // Add scroll event listener for animations
             window.addEventListener('scroll', animateOnScroll);
+
+            // Expanding panels functionality - Open popup on click
+            const panels = document.querySelectorAll('.panel');
+            const imagePopup = document.getElementById('imagePopup');
+            const popupImage = document.getElementById('popupImage');
+            const popupTitle = document.getElementById('popupTitle');
+            const closePopup = document.getElementById('closePopup');
+            const popupContent = document.getElementById('popupContent');
+
+            let scale = 1;
+            let initialDistance = 0;
+            let isPinching = false;
+
+            panels.forEach(panel => {
+                panel.addEventListener('click', () => {
+                    // Check if this panel is already active
+                    if (panel.classList.contains('active')) {
+                        // Panel is already active, open popup
+                        const bgImage = panel.style.backgroundImage;
+                        const imageUrl = bgImage.slice(5, -2); // Remove url(" and ")
+
+                        // Get title
+                        const title = panel.querySelector('h3').textContent;
+
+                        // Set popup content
+                        popupImage.src = imageUrl;
+                        popupTitle.textContent = title;
+
+                        // Show popup
+                        imagePopup.classList.add('active');
+
+                        // Reset zoom
+                        scale = 1;
+                        popupImage.style.transform = `scale(${scale})`;
+                    } else {
+                        // Panel is not active, just expand it
+                        removeActiveClasses();
+                        panel.classList.add('active');
+                    }
+                });
+            });
+
+            function removeActiveClasses() {
+                panels.forEach(panel => {
+                    panel.classList.remove('active');
+                });
+            }
+
+            // Auto-slide every 5 seconds
+            let currentPanelIndex = 0;
+            setInterval(() => {
+                // Only auto-slide if popup is not open
+                if (!imagePopup.classList.contains('active')) {
+                    currentPanelIndex = (currentPanelIndex + 1) % panels.length;
+                    removeActiveClasses();
+                    panels[currentPanelIndex].classList.add('active');
+                }
+            }, 5000);
+
+            // Close popup
+            closePopup.addEventListener('click', () => {
+                imagePopup.classList.remove('active');
+            });
+
+            // Close on background click
+            imagePopup.addEventListener('click', (e) => {
+                if (e.target === imagePopup) {
+                    imagePopup.classList.remove('active');
+                }
+            });
+
+            // Pinch to zoom functionality
+            function getDistance(touches) {
+                const dx = touches[0].clientX - touches[1].clientX;
+                const dy = touches[0].clientY - touches[1].clientY;
+                return Math.sqrt(dx * dx + dy * dy);
+            }
+
+            popupContent.addEventListener('touchstart', (e) => {
+                if (e.touches.length === 2) {
+                    isPinching = true;
+                    initialDistance = getDistance(e.touches);
+                }
+            });
+
+            popupContent.addEventListener('touchmove', (e) => {
+                if (isPinching && e.touches.length === 2) {
+                    e.preventDefault();
+                    const currentDistance = getDistance(e.touches);
+                    const scaleChange = currentDistance / initialDistance;
+
+                    scale = Math.min(Math.max(1, scale * scaleChange), 4); // Min 1x, Max 4x
+                    popupImage.style.transform = `scale(${scale})`;
+
+                    initialDistance = currentDistance;
+                }
+            });
+
+            popupContent.addEventListener('touchend', (e) => {
+                if (e.touches.length < 2) {
+                    isPinching = false;
+                }
+            });
+
+            // Double tap to zoom
+            let lastTap = 0;
+            popupImage.addEventListener('touchend', (e) => {
+                const currentTime = new Date().getTime();
+                const tapLength = currentTime - lastTap;
+
+                if (tapLength < 300 && tapLength > 0) {
+                    // Double tap detected
+                    if (scale === 1) {
+                        scale = 2;
+                    } else {
+                        scale = 1;
+                    }
+                    popupImage.style.transform = `scale(${scale})`;
+                }
+
+                lastTap = currentTime;
+            });
 
             // Prevent zoom on double tap
             let lastTouchEnd = 0;
