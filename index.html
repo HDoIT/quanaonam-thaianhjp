@@ -1006,6 +1006,268 @@
             box-shadow: 0 8px 25px rgba(0, 132, 255, 0.8);
         }
 
+        /* Floating Sale Badge */
+        .floating-sale-badge {
+            position: fixed;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 999;
+            animation: float-bounce 3s ease-in-out infinite;
+        }
+
+        .sale-badge-content {
+            background: linear-gradient(135deg, #dc2626, #991b1b);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 50px;
+            box-shadow: 0 8px 30px rgba(220, 38, 38, 0.6), 0 0 40px rgba(212, 175, 55, 0.4);
+            border: 3px solid var(--accent-gold);
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .sale-badge-content:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 40px rgba(220, 38, 38, 0.8), 0 0 60px rgba(212, 175, 55, 0.6);
+        }
+
+        .sale-badge-icon {
+            font-size: 2rem;
+            animation: pulse 1.5s infinite;
+        }
+
+        .sale-badge-text {
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .sale-badge-percent {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--accent-gold);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
+        }
+
+        /* Announcement Banner */
+        .announcement-banner {
+            background: linear-gradient(135deg, #dc2626, #991b1b, #7f1d1d);
+            color: white;
+            padding: 12px 15px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 3px solid var(--accent-gold);
+            box-shadow: 0 4px 20px rgba(220, 38, 38, 0.5);
+        }
+
+        .announcement-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+            animation: slide-shine 3s infinite;
+        }
+
+        .announcement-text {
+            font-size: 0.95rem;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .announcement-icon {
+            font-size: 1.2rem;
+            color: var(--accent-gold);
+            animation: pulse 1.5s infinite;
+        }
+
+        /* Featured Products Showcase */
+        .featured-products {
+            padding: 50px 0;
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.95), rgba(26, 26, 26, 0.95));
+            position: relative;
+            overflow: hidden;
+            border-top: 3px solid var(--accent-gold);
+            border-bottom: 3px solid var(--accent-gold);
+        }
+
+        .featured-products::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(220, 38, 38, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .featured-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .featured-title h2 {
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #fff, var(--accent-gold), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s infinite;
+        }
+
+        .featured-title p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .featured-item {
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.1), rgba(10, 10, 10, 0.8));
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            transition: all 0.4s ease;
+            animation: fadeInUp 0.8s ease-out;
+            animation-fill-mode: forwards;
+            opacity: 0;
+            position: relative;
+        }
+
+        .featured-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--accent-gold);
+            box-shadow: 0 15px 40px rgba(220, 38, 38, 0.4), 0 0 60px rgba(212, 175, 55, 0.3);
+        }
+
+        .featured-item-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .featured-item:hover .featured-item-image {
+            transform: scale(1.1);
+        }
+
+        .featured-item-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 8px 15px;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            border: 2px solid var(--accent-gold);
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.5);
+            z-index: 2;
+        }
+
+        .featured-item-info {
+            padding: 20px;
+            background: rgba(10, 10, 10, 0.9);
+        }
+
+        .featured-item-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .featured-item-desc {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .featured-item-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 2px solid var(--accent-gold);
+            transition: all 0.3s ease;
+        }
+
+        .featured-item-cta:hover {
+            background: linear-gradient(135deg, var(--primary-dark), #7f1d1d);
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(220, 38, 38, 0.6);
+        }
+
+        @keyframes float-bounce {
+
+            0%,
+            100% {
+                transform: translateY(-50%) translateX(0);
+            }
+
+            50% {
+                transform: translateY(-50%) translateX(10px);
+            }
+        }
+
+        @keyframes slide-shine {
+            0% {
+                left: -100%;
+            }
+
+            100% {
+                left: 100%;
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
         /* Footer Mobile */
         footer {
             background-color: rgba(15, 26, 46, 0.95);
@@ -1490,6 +1752,97 @@
         </div>
     </section>
 
+    <!-- Announcement Banner -->
+    <div class="announcement-banner">
+        <div class="announcement-text">
+            <i class="fas fa-fire announcement-icon"></i>
+            <span>🔥 FLASH SALE 60% - Chỉ còn trong hôm nay! Đừng bỏ lỡ!</span>
+            <i class="fas fa-fire announcement-icon"></i>
+        </div>
+    </div>
+
+    <!-- Floating Sale Badge -->
+    <!-- <a href="#products" class="floating-sale-badge">
+        <div class="sale-badge-content">
+            <i class="fas fa-gift sale-badge-icon"></i>
+            <div class="sale-badge-text">Ưu Đãi<br>Đặc Biệt</div>
+            <div class="sale-badge-percent">-60%</div>
+        </div>
+    </a> -->
+
+    <!-- Featured Products Showcase -->
+    <section class="featured-products">
+        <div class="container">
+            <div class="featured-title">
+                <h2>SẢN PHẨM NỔI BẬT</h2>
+                <p>Top 5 sản phẩm bán chạy nhất - Chất lượng cao cấp</p>
+            </div>
+            <div class="featured-grid">
+                <div class="featured-item" style="animation-delay: 0.1s">
+                    <img src="/images/Áo bomber/1.png" alt="Áo bomber" class="featured-item-image">
+                    <div class="featured-item-badge">Bán chạy #1</div>
+                    <div class="featured-item-info">
+                        <h3 class="featured-item-name">Áo Bomber Premium</h3>
+                        <p class="featured-item-desc">Áo bomber phong cách streetwear với chất liệu chống nước nhẹ, form
+                            dáng chuẩn</p>
+                        <a href="http://m.me/101980602523491" class="featured-item-cta" target="_blank">
+                            <i class="fab fa-facebook-messenger"></i>
+                            Nhận giá ngay
+                        </a>
+                    </div>
+                </div>
+                <div class="featured-item" style="animation-delay: 0.2s">
+                    <img src="/images/Áo phao lông vũ/4.png" alt="Áo phao lông vũ" class="featured-item-image">
+                    <div class="featured-item-badge">Hot</div>
+                    <div class="featured-item-info">
+                        <h3 class="featured-item-name">Áo Phao Lông Vũ</h3>
+                        <p class="featured-item-desc">Lông vũ thiên nga cao cấp, nhẹ nhưng ấm áp vượt trội</p>
+                        <a href="http://m.me/101980602523491" class="featured-item-cta" target="_blank">
+                            <i class="fab fa-facebook-messenger"></i>
+                            Nhận giá ngay
+                        </a>
+                    </div>
+                </div>
+                <div class="featured-item" style="animation-delay: 0.3s">
+                    <img src="/images/Áo hoodie/13.png" alt="Áo hoodie" class="featured-item-image">
+                    <div class="featured-item-badge">Mới</div>
+                    <div class="featured-item-info">
+                        <h3 class="featured-item-name">Áo Hoodie Unisex</h3>
+                        <p class="featured-item-desc">Chất liệu nỉ mềm mại, thiết kế trẻ trung phù hợp mùa thu đông</p>
+                        <a href="http://m.me/101980602523491" class="featured-item-cta" target="_blank">
+                            <i class="fab fa-facebook-messenger"></i>
+                            Nhận giá ngay
+                        </a>
+                    </div>
+                </div>
+                <div class="featured-item" style="animation-delay: 0.4s">
+                    <img src="/images/Quần âu/2.png" alt="Quần âu" class="featured-item-image">
+                    <div class="featured-item-badge">Cao cấp</div>
+                    <div class="featured-item-info">
+                        <h3 class="featured-item-name">Quần Âu Công Sở</h3>
+                        <p class="featured-item-desc">Form dáng chuẩn, chất liệu không nhăn, phù hợp công sở</p>
+                        <a href="http://m.me/101980602523491" class="featured-item-cta" target="_blank">
+                            <i class="fab fa-facebook-messenger"></i>
+                            Nhận giá ngay
+                        </a>
+                    </div>
+                </div>
+                <div class="featured-item" style="animation-delay: 0.5s">
+                    <img src="/images/Áo khoác Jeans/2.png" alt="Áo khoác Jeans" class="featured-item-image">
+                    <div class="featured-item-badge">Phong cách</div>
+                    <div class="featured-item-info">
+                        <h3 class="featured-item-name">Áo Khoác Jeans</h3>
+                        <p class="featured-item-desc">Jeans bền bỉ với công nghệ giặt vintage, phong cách cá tính</p>
+                        <a href="http://m.me/101980602523491" class="featured-item-cta" target="_blank">
+                            <i class="fab fa-facebook-messenger"></i>
+                            Nhận giá ngay
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Products Section Mobile -->
     <section class="products-section" id="products">
         <div class="container">
@@ -1646,8 +1999,7 @@
                 </div>
 
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
-                        alt="Về Thái Anh JP">
+                    <img src="/images/shop-logo.jpg" alt="Về Thái Anh JP">
                 </div>
             </div>
         </div>
