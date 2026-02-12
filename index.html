@@ -49,14 +49,15 @@
         rel="stylesheet">
     <style>
         :root {
-            --primary: #1a5fb4;
-            --primary-dark: #0d4a9c;
-            --secondary: #f9c74f;
-            --dark: #0f1a2e;
+            --primary: #dc2626;
+            --primary-dark: #991b1b;
+            --secondary: #fbbf24;
+            --dark: #0a0a0a;
             --light: #f8f9fa;
             --gray: #6c757d;
             --success: #2ecc71;
-            --danger: #e74c3c;
+            --danger: #dc2626;
+            --accent-gold: #d4af37;
             --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
@@ -145,15 +146,15 @@
 
         /* Header Mobile */
         header {
-            background: linear-gradient(135deg, rgba(15, 26, 46, 0.95) 0%, rgba(26, 95, 180, 0.95) 100%);
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.98) 0%, rgba(153, 27, 27, 0.95) 100%);
             color: white;
             padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 30px rgba(220, 38, 38, 0.4), 0 0 60px rgba(212, 175, 55, 0.2);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 2px solid rgba(212, 175, 55, 0.3);
         }
 
         .header-content {
@@ -184,9 +185,10 @@
             height: 50px;
             border-radius: 50%;
             overflow: hidden;
-            border: 2px solid var(--secondary);
+            border: 3px solid var(--accent-gold);
             position: relative;
             z-index: 2;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
         }
 
         .logo-img img {
@@ -198,10 +200,12 @@
         .logo-text h1 {
             font-size: 1.4rem;
             margin-bottom: 3px;
-            background: linear-gradient(to right, #fff, var(--secondary));
+            background: linear-gradient(135deg, #fff, var(--accent-gold), var(--primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+            animation: shimmer 3s infinite;
         }
 
         .logo-text p {
@@ -243,21 +247,22 @@
         .header-messenger-btn:active {
             background: rgba(255, 255, 255, 0.3);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 132, 255, 0.4);
+            box-shadow: 0 5px 15px rgba(220, 38, 38, 0.6), 0 0 20px rgba(212, 175, 55, 0.4);
         }
 
         .countdown-container {
             flex: 1;
-            background: rgba(255, 255, 255, 0.15);
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.3), rgba(10, 10, 10, 0.5));
             backdrop-filter: blur(10px);
             border-radius: 10px;
             padding: 8px 12px;
             text-align: center;
-            animation: slideInRight 1s ease-out;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: slideInRight 1s ease-out, pulse-glow 2s infinite;
+            border: 2px solid rgba(212, 175, 55, 0.4);
             position: relative;
             overflow: hidden;
             max-width: 300px;
+            box-shadow: 0 0 20px rgba(220, 38, 38, 0.3), inset 0 0 20px rgba(212, 175, 55, 0.1);
         }
 
         .countdown-title {
@@ -281,7 +286,7 @@
         .countdown-value {
             font-size: 1.2rem;
             font-weight: 700;
-            background: rgba(255, 255, 255, 0.25);
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.4), rgba(153, 27, 27, 0.6));
             width: 35px;
             height: 35px;
             display: flex;
@@ -291,6 +296,10 @@
             margin-bottom: 4px;
             position: relative;
             overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.5);
+            box-shadow: 0 0 15px rgba(220, 38, 38, 0.4);
+            color: var(--accent-gold);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
         }
 
         .countdown-label {
@@ -367,26 +376,28 @@
             align-items: center;
             justify-content: center;
             gap: 12px;
-            background: linear-gradient(135deg, #0084ff 0%, #0066cc 100%);
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 50%, #7f1d1d 100%);
             color: white;
             text-decoration: none;
             padding: 18px 25px;
             border-radius: 50px;
             font-size: 1.1rem;
             font-weight: 600;
-            box-shadow: 0 8px 25px rgba(0, 132, 255, 0.4);
+            box-shadow: 0 8px 25px rgba(220, 38, 38, 0.5), 0 0 40px rgba(212, 175, 55, 0.3);
             transition: var(--transition);
             position: relative;
             overflow: hidden;
             z-index: 1;
             width: 100%;
             max-width: 320px;
+            border: 2px solid rgba(212, 175, 55, 0.5);
+            animation: pulse-glow 2s infinite;
         }
 
         .hero-cta-primary:hover,
         .hero-cta-primary:active {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(0, 132, 255, 0.8);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 35px rgba(220, 38, 38, 0.8), 0 0 50px rgba(212, 175, 55, 0.5);
         }
 
         .hero-cta-primary:before {
@@ -430,10 +441,10 @@
 
         .hero-cta-secondary:hover,
         .hero-cta-secondary:active {
-            background: var(--primary);
-            color: white;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--accent-gold);
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(26, 95, 180, 0.5);
+            box-shadow: 0 8px 20px rgba(220, 38, 38, 0.5), 0 0 30px rgba(212, 175, 55, 0.4);
         }
 
         .hero-cta-secondary:before {
@@ -842,10 +853,12 @@
         /* About Section Mobile */
         .about-section {
             padding: 40px 0;
-            background: linear-gradient(135deg, rgba(15, 26, 46, 0.95) 0%, rgba(26, 95, 180, 0.95) 100%);
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.98) 0%, rgba(153, 27, 27, 0.95) 50%, rgba(10, 10, 10, 0.98) 100%);
             color: white;
             position: relative;
             overflow: hidden;
+            border-top: 3px solid rgba(212, 175, 55, 0.5);
+            border-bottom: 3px solid rgba(212, 175, 55, 0.5);
         }
 
         .about-section:before {
@@ -890,8 +903,9 @@
             transform: translateX(-50%);
             width: 60px;
             height: 3px;
-            background: linear-gradient(to right, var(--secondary), #fff);
+            background: linear-gradient(to right, var(--accent-gold), var(--primary));
             border-radius: 3px;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
         }
 
         .about-text p {
@@ -919,9 +933,10 @@
         .stat-value {
             font-size: 1.8rem;
             font-weight: 700;
-            color: var(--secondary);
+            color: var(--accent-gold);
             margin-bottom: 5px;
-            text-shadow: 0 0 10px rgba(249, 199, 79, 0.5);
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.8), 0 0 40px rgba(220, 38, 38, 0.5);
+            animation: shimmer 3s infinite;
         }
 
         .stat-label {
@@ -1171,6 +1186,30 @@
             to {
                 opacity: 1;
                 transform: translateX(0);
+            }
+        }
+
+        @keyframes shimmer {
+
+            0%,
+            100% {
+                filter: brightness(1);
+            }
+
+            50% {
+                filter: brightness(1.3);
+            }
+        }
+
+        @keyframes pulse-glow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(220, 38, 38, 0.3), inset 0 0 20px rgba(212, 175, 55, 0.1);
+            }
+
+            50% {
+                box-shadow: 0 0 30px rgba(220, 38, 38, 0.6), inset 0 0 30px rgba(212, 175, 55, 0.2);
             }
         }
 
@@ -1438,13 +1477,13 @@
                         </div>
                     </div>
 
-                    <p>Hơn 3 năm qua, Thái Anh JP đặt mục tiêu trở thành một lựa chọn đáng tin cậy — nơi khách hàng có
-                        thể tìm thấy phong cách thời trang phù hợp với bản thân và tự tin hơn mỗi ngày.</p>
+                    <!-- <p>Hơn 3 năm qua, Thái Anh JP đặt mục tiêu trở thành một lựa chọn đáng tin cậy — nơi khách hàng có
+                        thể tìm thấy phong cách thời trang phù hợp với bản thân và tự tin hơn mỗi ngày.</p> -->
                 </div>
-
+                <!-- 
                 <div class="hero-image">
                     <img src="/images/shop-logo.jpg" alt="Thời trang nam Thái Anh JP">
-                </div>
+                </div> -->
 
 
             </div>
