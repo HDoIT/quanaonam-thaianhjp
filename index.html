@@ -529,32 +529,45 @@
             background-position: center;
             background-repeat: no-repeat;
             height: 35vh;
-            border-radius: 0;
+            border-radius: 20px;
             color: #fff;
             cursor: pointer;
             flex: 0.5;
             position: relative;
-            transition: all 700ms ease-in;
+            transition: all 700ms cubic-bezier(0.05, 0.61, 0.41, 0.95);
             overflow: hidden;
+            margin: 0 5px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
         .panel h3 {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             position: absolute;
-            bottom: 20px;
+            bottom: 30px;
             left: 20px;
             margin: 0;
             opacity: 0;
-            transition: opacity 0.3s ease-in 0.4s;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            transition: opacity 0.3s ease-in 0.4s, transform 0.3s ease-in 0.4s;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+            transform: translateY(20px);
+            background: rgba(0, 0, 0, 0.3);
+            padding: 5px 15px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            width: fit-content;
+            max-width: 80%;
         }
 
         .panel.active {
-            flex: 5;
+            flex: 8;
+            border-color: var(--accent-gold);
+            box-shadow: 0 15px 30px rgba(220, 38, 38, 0.3), 0 0 20px rgba(212, 175, 55, 0.2);
         }
 
         .panel.active h3 {
             opacity: 1;
+            transform: translateY(0);
         }
 
         .panel::before {
@@ -564,13 +577,125 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.5) 100%);
-            opacity: 0;
+            background: linear-gradient(to bottom, transparent 40%, rgba(0, 0, 0, 0.7) 100%);
+            opacity: 0.6;
             transition: opacity 0.3s ease-in;
         }
 
         .panel.active::before {
             opacity: 1;
+        }
+
+        .panel-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            z-index: 5;
+            border: 1px solid var(--accent-gold);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s;
+        }
+
+        .panel.active .panel-badge {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Standalone Poster Section */
+        .poster-promo {
+            width: 100%;
+            margin-bottom: 40px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            background: #000;
+            cursor: pointer;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(212, 175, 55, 0.4);
+            animation: fadeInDown 1.2s ease-out;
+        }
+
+        .poster-promo-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .poster-promo:hover .poster-promo-img {
+            transform: scale(1.05);
+        }
+
+        .poster-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 60%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+            color: white;
+            pointer-events: none;
+        }
+
+        .poster-content {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease-out 0.5s forwards;
+        }
+
+        .poster-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(135deg, #fff, var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .poster-subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+            max-width: 80%;
+        }
+
+        .poster-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--primary);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid var(--accent-gold);
+            box-shadow: 0 5px 20px rgba(220, 38, 38, 0.5);
+            width: fit-content;
+        }
+
+        @media (max-width: 767px) {
+            .poster-title {
+                font-size: 1.5rem;
+            }
+
+            .poster-subtitle {
+                font-size: 0.9rem;
+            }
         }
 
         /* Image Popup Modal */
@@ -1698,12 +1823,27 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
+                    <!-- New Poster Section -->
+                    <div class="poster-promo">
+                        <img src="/images/10.png" alt="Special Offer Poster" class="poster-promo-img">
+                        <div class="poster-overlay">
+                            <div class="poster-content">
+                                <h2 class="poster-title">THAI ANH X DAO LONG VU</h2>
+                                <p class="poster-subtitle">Đỉnh cao phong cách - Khẳng định bản sắc. Ưu đãi lớn nhất
+                                    trong năm đang chờ đợi bạn.</p>
+                                <div class="poster-cta">Xem sản phẩm <i class="fas fa-arrow-right"></i></div>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Expanding Panel Slider -->
                     <div class="expanding-panels">
                         <div class="panel active" style="background-image: url('/images/banner-sales.png')">
+                            <div class="panel-badge">HOT DEAL</div>
                             <h3>Sale 60% các sản phẩm</h3>
                         </div>
                         <div class="panel" style="background-image: url('/images/banner.png')">
+                            <div class="panel-badge">THỜI TRANG</div>
                             <h3>Thời trang nam Việt tại Nhật</h3>
                         </div>
                     </div>
