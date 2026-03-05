@@ -1849,9 +1849,9 @@
                         <img src="/images/10.png" alt="Special Offer Poster" class="poster-promo-img">
                         <div class="poster-overlay">
                             <div class="poster-content">
-                                <h2 class="poster-title">THAI ANH X DAO LONG VU</h2>
+                                <!-- <h2 class="poster-title">THAI ANH X DAO LONG VU</h2>
                                 <p class="poster-subtitle">Đỉnh cao phong cách - Khẳng định bản sắc. Ưu đãi lớn nhất
-                                    trong năm đang chờ đợi bạn.</p>
+                                    trong năm đang chờ đợi bạn.</p> -->
                                 <div class="poster-cta">Xem sản phẩm <i class="fas fa-arrow-right"></i></div>
                             </div>
                         </div>
@@ -2414,6 +2414,7 @@
 
             // Expanding panels functionality - Open popup on click
             const panels = document.querySelectorAll('.panel');
+            const posterPromo = document.querySelector('.poster-promo');
             const imagePopup = document.getElementById('imagePopup');
             const popupImage = document.getElementById('popupImage');
             const popupTitle = document.getElementById('popupTitle');
@@ -2423,6 +2424,20 @@
             let scale = 1;
             let initialDistance = 0;
             let isPinching = false;
+
+            // Poster Click-to-Zoom
+            if (posterPromo) {
+                posterPromo.addEventListener('click', () => {
+                    const posterImg = posterPromo.querySelector('.poster-promo-img');
+                    if (posterImg) {
+                        popupImage.src = posterImg.src;
+                        popupTitle.textContent = "THAI ANH JP - POSTER";
+                        imagePopup.classList.add('active');
+                        scale = 1;
+                        popupImage.style.transform = `scale(${scale})`;
+                    }
+                });
+            }
 
             panels.forEach(panel => {
                 panel.addEventListener('click', () => {
